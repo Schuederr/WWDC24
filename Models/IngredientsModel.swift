@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 //import UniformTypeIdentifiers
 
-struct Ingredients: Codable, Identifiable {
+struct Ingredients: Codable, Identifiable, Hashable {
     let title: String
     let image: String
     let id: UUID
@@ -18,7 +18,10 @@ struct Ingredients: Codable, Identifiable {
         var ingredient: [Ingredients] = []
         
         let farinha = Ingredients(title: "farinha", image: "nada ainda", id: UUID())
-        ingredient.append(farinha)
+        ingredient.append(farinha)        
+        
+        let ovos = Ingredients(title: "ovos", image: "nada ainda", id: UUID())
+        ingredient.append(ovos)
         
         return ingredient
     }

@@ -22,9 +22,7 @@ struct KitchenView: View {
             }, label: {
                 Text("abre sheet")
             }).sheet(isPresented: $isShowingSheet, content: {
-                
-                Text("vaiiii")
-                
+                                
                 Button {
                     isShowingSheet.toggle()
                 } label: {
