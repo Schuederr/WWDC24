@@ -18,6 +18,7 @@ struct CakeView: View {
             .onChanged { value in
                 offset = CGSize(width: value.startLocation.x + value.translation.width,
                                 height: value.startLocation.y + value.translation.height)
+                //.onEnded pra fazer colidir com o liquidificador
             }
     }
     
@@ -28,7 +29,7 @@ struct CakeView: View {
             Text("fazer o bolo").padding()
             NavigationLink("Ir para tela final", destination: FinalView()).padding()
             
-            ForEach($ingredients) { $ingredient in
+            ForEach($ingredients, id: \.self) { $ingredient in
                 Text(ingredient.title)
                     .offset(offset)
                     .gesture(dragGesture)

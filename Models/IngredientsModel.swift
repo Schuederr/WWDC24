@@ -33,8 +33,9 @@ struct Ingredients: Codable, Identifiable, Hashable {
 ////fazer o negocio na mao que o andre falou
 //extension UTType {
 //    static let ingredients = UTType(exportedAs: "natalia.WWDC24.ingredients")
-}
-    
-struct MockData {
     
 }
+//
+//struct MockData {
+//    
+//}
