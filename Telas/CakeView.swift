@@ -9,41 +9,39 @@ import SwiftUI
 
 struct CakeView: View {
     
-    @State var ingredients = Ingredients.populateIngredients()
+    @State var ingredients = Ingredient.populateIngredients()
     
-    @State private var offset = CGSize.zero
-    
-    var dragGesture: some Gesture {
-        DragGesture()
-            .onChanged { value in
-                offset = CGSize(width: value.startLocation.x + value.translation.width,
-                                height: value.startLocation.y + value.translation.height)
-                //.onEnded pra fazer colidir com o liquidificador
-            }
-    }
+    @State private var dragOffsets: [CGSize] = Array(repeating: .zero, count: 10)
+    @State private var positions: [CGSize] = Array(repeating: .zero, count: 10)
     
     var body: some View {
         
         VStack {
-
             Text("fazer o bolo").padding()
             NavigationLink("Ir para tela final", destination: FinalView()).padding()
             
-            ForEach($ingredients, id: \.self) { $ingredient in
-                Text(ingredient.title)
-                    .offset(offset)
-                    .gesture(dragGesture)
-                    .padding()
-            }
+            HStack {
+                ForEach(Array(ingredients.enumerated()), id: \.offset) { index, ingredient in
+                    Text(ingredient.title)
+                        .padding()
+                        .offset(x: positions[index].width + dragOffsets[index].width,
+                                    y: positions[index].height + dragOffsets[index].height)
+                            .gesture(DragGesture()
+                                .onChanged { value in
+                                    dragOffsets[index] = value.translation
+                                })
+                        }
+                }
             
             Button("Reset") {
-                        offset = .zero
+                resetOffsets()
             }.padding()
         }
     }
+
+    private func resetOffsets() {
+        dragOffsets = Array(repeating: .zero, count: 6)
+        positions = Array(repeating: .zero, count: 6)
+    }
     
-    
-//    #Preview {
-//        CakeView()
-//    }
 }

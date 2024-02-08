@@ -7,35 +7,21 @@
 
 import Foundation
 import SwiftUI
-//import UniformTypeIdentifiers
 
-struct Ingredients: Codable, Identifiable, Hashable {
+struct Ingredient: Codable, Identifiable, Hashable {
     let title: String
     let image: String
     let id: UUID
     
-    static func populateIngredients() -> [Ingredients] {
-        var ingredient: [Ingredients] = []
+    static func populateIngredients() -> [Ingredient] {
+        var ingredients: [Ingredient] = []
         
-        let farinha = Ingredients(title: "farinha", image: "nada ainda", id: UUID())
-        ingredient.append(farinha)        
+        let farinha = Ingredient(title: "farinha", image: "nada ainda", id: UUID())
+        ingredients.append(farinha)
         
-        let ovos = Ingredients(title: "ovos", image: "nada ainda", id: UUID())
-        ingredient.append(ovos)
+        let ovos = Ingredient(title: "ovos", image: "nada ainda", id: UUID())
+        ingredients.append(ovos)
         
-        return ingredient
+        return ingredients
     }
-    
-//    static var transferRepresentation: some TransferRepresentation { CodableRepresentation(contentType: .ingredients)
-//    }
-//}
-//
-////fazer o negocio na mao que o andre falou
-//extension UTType {
-//    static let ingredients = UTType(exportedAs: "natalia.WWDC24.ingredients")
-    
 }
-//
-//struct MockData {
-//    
-//}
