@@ -20,7 +20,13 @@ struct Ingredient: Codable, Identifiable, Hashable {
         ingredients.append(farinha)
         
         let ovos = Ingredient(title: "ovos", image: "nada ainda", id: UUID())
-        ingredients.append(ovos)
+        ingredients.append(ovos)        
+        
+        let leite = Ingredient(title: "leite", image: "nada ainda", id: UUID())
+        ingredients.append(leite)
+        
+        let fuba = Ingredient(title: "fuba", image: "nada ainda", id: UUID())
+        ingredients.append(fuba)
         
         return ingredients
     }
