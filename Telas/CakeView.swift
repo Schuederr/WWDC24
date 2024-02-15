@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CakeView: View {
     
+    // falta: botao reset e fazer detectar o frame e nao o ponto
+    
     @State var ingredients = Ingredient.populateIngredients()
     
     @State private var dragOffsets: [CGSize] = Array(repeating: .zero, count: 4)
@@ -25,7 +27,7 @@ struct CakeView: View {
         VStack {
             HStack {
                 Text("fazer o bolo").padding()
-                NavigationLink("Ir para tela final", destination: FinalView()).padding()
+                NavigationLink("bota bolo na forma", destination: PourCakeView()).padding()
             }
             
             VStack {
@@ -60,6 +62,7 @@ struct CakeView: View {
             Button("Reset") {
                 resetOffsets()
             }.padding()
+            
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
         .coordinateSpace(name: "AbsolutePositionReader")
         .onPreferenceChange(AbsolutePositionKey.self, perform: { value in
@@ -67,7 +70,6 @@ struct CakeView: View {
                 if let i = Int(v.id) {
                     positions[i] = v.absolutePosition
                 }
-                
                 if v.id == "oi" {
                     oiFrame = CGRect(x: v.absolutePosition.x, y: v.absolutePosition.y, width: 100, height: 100)
                 }
@@ -96,7 +98,6 @@ struct CakeView: View {
         if ingredientFrame.intersects(oiFrame) {
             collision = true
             
-            //                resetOffsets()
         }
         
     }
