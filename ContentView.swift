@@ -32,6 +32,10 @@ struct ContentView: View {
                 VStack {
                     HStack {
                         Spacer()
+                        Image(systemName: "ipad.landscape")
+                            .symbolRenderingMode(.monochrome)
+                            .foregroundStyle(Color("marrom"))
+                            .padding(.trailing, 2)
                         Text("Please use landscape orientation")
                             .foregroundStyle(Color("marrom"))
                         Spacer()
@@ -46,10 +50,13 @@ struct ContentView: View {
                     NavigationLink {
                         MsgView()
                     } label: {
-                        VStack {
-                            Text("START")
-                                .foregroundStyle(Color("marrom"))
-                        }
+                            VStack {
+                                Text("START")
+                                    .font(.custom("VastShadow", size: 36))
+                                    .foregroundStyle(Color("marrom"))
+                            }
+                            .frame(width: 250, height: 75)
+                        .background(Color("begezinho"))
                     }
                 }
             }
