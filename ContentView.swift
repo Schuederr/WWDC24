@@ -55,7 +55,7 @@ struct ContentView: View {
                         .scaleEffect(0.7)
                         .padding(32)
 
-                    /// fazer sombra e botar fonte
+                    /// fazer sombra (do jeito certo) e botar fonte
                     
                     NavigationLink {
                         MsgView()
@@ -67,6 +67,7 @@ struct ContentView: View {
                             }
                             .frame(width: 250, height: 75)
                         .background(Color("begezinho"))
+                        .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
                     }
                     Spacer()
                 }
