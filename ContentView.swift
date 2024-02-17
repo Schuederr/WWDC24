@@ -8,45 +8,55 @@ struct ContentView: View {
                 VStack{
                     HStack {
                         Image("milho")
-                            .frame(width: 375, height: 268)
-                        //                            .resizable()
-                        //                            .aspectRatio(contentMode: .fit)
-                            .scaleEffect(0.5)
-                            .clipped()
+                            .frame(width: 400, height: 400)
+                            .scaleEffect(0.7)
+                            .edgesIgnoringSafeArea(.all)
                         Spacer()
                     }
+                    Spacer()
                     HStack {
                         Spacer()
                         Image("formaVazia")
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fit)
-                            .scaleEffect(0.5)
-                            .rotationEffect(Angle(degrees: -20))
-                            .clipped()
+                            .frame(width: 340, height: 200)
+                            .scaleEffect(0.7)
+                            .rotationEffect(Angle(degrees: -25))
+                            .edgesIgnoringSafeArea(.all)
                     }
                 }
-                
-                .frame(maxWidth: .infinity)
                 
                 // text, title and button
                 VStack {
                     HStack {
                         Spacer()
+                        Button(action: {
+                            ///fazer parar musica aqui
+                        }, label: {
+                            Image(systemName: "speaker.slash")
+                                .font(.largeTitle)
+                                .bold()
+                                .foregroundStyle(Color("marrom"))
+                                .padding(.trailing, 40)
+                                .padding(.top, 24)
+                        })
+                    }
+                    HStack(alignment: .center) {
                         Image(systemName: "ipad.landscape")
                             .symbolRenderingMode(.monochrome)
                             .foregroundStyle(Color("marrom"))
                             .padding(.trailing, 2)
                         Text("Please use landscape orientation")
                             .foregroundStyle(Color("marrom"))
-                        Spacer()
-                        Image(systemName: "speaker.slash")
-                            .padding(.trailing)
-                    }
+                    }.frame(alignment: .center)
+                        .padding(.bottom, 40)
                     
                     Image("titulo")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .scaleEffect(0.5)
+                        .scaleEffect(0.7)
+                        .padding(32)
+
+                    /// fazer sombra e botar fonte
+                    
                     NavigationLink {
                         MsgView()
                     } label: {
@@ -58,6 +68,7 @@ struct ContentView: View {
                             .frame(width: 250, height: 75)
                         .background(Color("begezinho"))
                     }
+                    Spacer()
                 }
             }
             .frame(maxWidth: .infinity)
