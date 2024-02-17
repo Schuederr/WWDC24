@@ -35,8 +35,7 @@ struct KitchenView: View {
                         Image("folhinha").scaleEffect(0.5)
                     })
                     .frame(width: 120, height: 220)
-                    .padding(.bottom, 100)
-                    .padding(.trailing, 200)
+                    .offset(CGSize(width: -150, height: -150))
                     .sheet(isPresented: $sheetFolhinha, content: {
                         Text("folhinha")
                         Button {
@@ -58,8 +57,7 @@ struct KitchenView: View {
                         Image("barco").scaleEffect(0.5)
                     })
                     .frame(width: 140, height: 225)
-                    .padding(.leading, 150)
-//                    .padding(.bottom, 100)
+                    .offset(CGSize(width: 250, height: -100))
                     .sheet(isPresented: $sheetBarco, content: {
                         Text("barco")
                         Button {
@@ -77,8 +75,7 @@ struct KitchenView: View {
                         Image("sacoFuba").scaleEffect(0.5)
                     })
                     .frame(width: 135, height: 165)
-                    .padding(.bottom, 250)
-                    .padding(.leading, 350)
+                    .offset(CGSize(width: -20, height: -60))
                     .sheet(isPresented: $sheetFuba, content: {
                         Text("fuba")
                         Button {
@@ -94,8 +91,7 @@ struct KitchenView: View {
                         Image("retrato").scaleEffect(0.5)
                     })
                     .frame(width: 140, height: 50)
-                    .padding(.leading, 370)
-                    .padding(.bottom, 100)
+                    .offset(CGSize(width: 350, height: -10))
                     .sheet(isPresented: $sheetRetrato, content: {
                         Text("retrato")
                         Button {
@@ -125,15 +121,34 @@ struct KitchenView: View {
             if vovo == true {
                 ZStack {
                     Rectangle()
-                        .foregroundStyle(.opacity(0.5))
+                        .foregroundStyle(.white.opacity(0.25))
                         .ignoresSafeArea()
-                    Image("vovo")
-                        .resizable()
-                        .scaledToFit()
-                        .ignoresSafeArea()
-                        .offset(CGSize(width: -300, height: 250))
+                    
+                    HStack {
+                        Image("vovo")
+                            .resizable()
+                            .scaledToFit()
+                            .ignoresSafeArea()
+                            .offset(CGSize(width: 170, height: 110))
+                        
+                        ZStack {
+                            Image("fala")
+                                .resizable()
+                                .scaledToFit()
+                                .scaleEffect(0.7)
+                                .ignoresSafeArea()
+                            VStack {
+                                Text("blablablabla nao defini ainda mas toca na tela pra pode mexe na cozinha")
+                                    .multilineTextAlignment(.leading)
+                            }
+                            .frame(width: 500, height: 200)
+//                            .background()
+                            .offset(CGSize(width: 25, height: 0))
+                        }.offset(CGSize(width: 10.0, height: -250))
+                    }
+                }.onTapGesture {
+                    vovo = false
                 }
-                
             }
             
         }
