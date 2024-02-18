@@ -16,12 +16,12 @@ struct KitchenView: View {
     
 //    @State private var isAnimating: Bool = false
 //    
-    @State private var vovo = false
+    @State private var vovo = true
     
-    @State private var abriuFolhinha: Bool = false
-    @State private var abriuBarco: Bool = false
-    @State private var abriuFuba: Bool = false
-    @State private var abriuRetrato: Bool = false
+    @State private var abriuFolhinha = false
+    @State private var abriuBarco = false
+    @State private var abriuFuba = false
+    @State private var abriuRetrato = false
     
     var body: some View {
         

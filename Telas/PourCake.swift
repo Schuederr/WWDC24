@@ -9,7 +9,6 @@ class PourCakeViewModel: ObservableObject {
     let motionManager = CMMotionManager()
     let motionQueue = OperationQueue()
     
-    
     init() {
         motionManager.startDeviceMotionUpdates(to: motionQueue) { (data, error) in
             guard let data = data else {
@@ -37,10 +36,12 @@ class PourCakeViewModel: ObservableObject {
 }
 
 struct PourCakeView: View {
+    
     @StateObject var viewModel = PourCakeViewModel()
+    
+    @State private var jaClicou = false
 
     var body: some View {
-        
         
         ZStack {
             Image("pourCake")
@@ -48,33 +49,16 @@ struct PourCakeView: View {
                 .aspectRatio(contentMode: .fill)
                 .ignoresSafeArea()
             
-            ZStack {
-                Image("fala")
-                    .resizable()
-                    .scaledToFit()
-                    .scaleEffect(0.6)
-                    .ignoresSafeArea()
-                VStack {
-                    Text("blablablabla nao defini ainda mas vai fala pra virar o ipad")
-                        .multilineTextAlignment(.leading)
-                }
-                .frame(width: 650, height: 250)
-                .offset(CGSize(width: 25, height: 0))
-            }.offset(CGSize(width: -225, height: -270))
-                .padding(.bottom)
-            
-            
             HStack {
                 
                 Image("formaVazia")
                     .scaleEffect(0.5)
-                    .offset(CGSize(width: 180, height: 130))
+                    .offset(CGSize(width: 200, height: 100))
                 
                 Image("liquidCheio")
                     .scaleEffect(0.5)
                     .rotationEffect(.degrees(viewModel.rotation), anchor: .center)
-                    .foregroundStyle(viewModel.isFinished ? .black : .blue)
-                
+                    .offset(CGSize(width: 0, height: -60))
                 
             }
             
@@ -89,9 +73,37 @@ struct PourCakeView: View {
                         .frame(width: 75, height: 75)
                         .background(Color("begezinho"))
                 }
+                
             }
             .frame(width: 1100, height: 780, alignment: .bottomTrailing)
             .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
+            
+            if jaClicou == false {
+                
+                ZStack {
+                    Rectangle()
+                        .foregroundStyle(.white.opacity(0.25))
+                        .ignoresSafeArea()
+                    ZStack {
+                        Image("fala")
+                            .resizable()
+                            .scaledToFit()
+                            .scaleEffect(0.6)
+                            .ignoresSafeArea()
+                        VStack {
+                            Text("blablablabla nao defini ainda mas vai fala pra virar o ipad")
+                                .multilineTextAlignment(.leading)
+                        }
+                        .frame(width: 650, height: 250)
+                        .offset(CGSize(width: 25, height: 0))
+                    }.offset(CGSize(width: -225, height: -270))
+                        .padding(.bottom)
+                }.onTapGesture {
+                    jaClicou = true
+                }
+            }
+            
+            
         }.background(Color("amarelinho"))
         
     }
