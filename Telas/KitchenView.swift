@@ -16,7 +16,12 @@ struct KitchenView: View {
     
 //    @State private var isAnimating: Bool = false
 //    
-    @State private var vovo = true
+    @State private var vovo = false
+    
+    @State private var abriuFolhinha: Bool = false
+    @State private var abriuBarco: Bool = false
+    @State private var abriuFuba: Bool = false
+    @State private var abriuRetrato: Bool = false
     
     var body: some View {
         
@@ -32,14 +37,18 @@ struct KitchenView: View {
                     Button(action: {
                         sheetFolhinha.toggle()
                     }, label: {
-                        Image("folhinha").scaleEffect(0.5)
+                        Image("folhinha")
+                            .scaleEffect(0.5)
+                            .blur(radius: abriuFolhinha ? 2.0 : 0.0)
                     })
                     .frame(width: 120, height: 220)
                     .offset(CGSize(width: -150, height: -150))
                     .sheet(isPresented: $sheetFolhinha, content: {
+                        
                         Text("folhinha")
                         Button {
                             sheetFolhinha.toggle()
+                            abriuFolhinha = true
                         } label: {
                             Text("Fecha")
                         }
@@ -54,14 +63,18 @@ struct KitchenView: View {
                     Button(action: {
                         sheetBarco.toggle()
                     }, label: {
-                        Image("barco").scaleEffect(0.5)
+                        Image("barco")
+                            .scaleEffect(0.5)
+                            .blur(radius: abriuBarco ? 2.0 : 0.0)
                     })
                     .frame(width: 140, height: 225)
                     .offset(CGSize(width: 250, height: -100))
                     .sheet(isPresented: $sheetBarco, content: {
+                        
                         Text("barco")
                         Button {
                             sheetBarco.toggle()
+                            abriuBarco = true
                         } label: {
                             Text("Fecha")
                         }
@@ -72,14 +85,18 @@ struct KitchenView: View {
                     Button(action: {
                         sheetFuba.toggle()
                     }, label: {
-                        Image("sacoFuba").scaleEffect(0.5)
+                        Image("sacoFuba")
+                            .scaleEffect(0.5)
+                            .blur(radius: abriuFuba ? 2.0 : 0.0)
                     })
                     .frame(width: 135, height: 165)
                     .offset(CGSize(width: -20, height: -60))
                     .sheet(isPresented: $sheetFuba, content: {
+                        
                         Text("fuba")
                         Button {
                             sheetFuba.toggle()
+                            abriuFuba = true
                         } label: {
                             Text("Fecha")
                         }
@@ -88,14 +105,18 @@ struct KitchenView: View {
                     Button(action: {
                         sheetRetrato.toggle()
                     }, label: {
-                        Image("retrato").scaleEffect(0.5)
+                        Image("retrato")
+                            .scaleEffect(0.5)
+                            .blur(radius: abriuRetrato ? 2.0 : 0.0)
                     })
                     .frame(width: 140, height: 50)
                     .offset(CGSize(width: 350, height: -10))
                     .sheet(isPresented: $sheetRetrato, content: {
+                        
                         Text("retrato")
                         Button {
                             sheetRetrato.toggle()
+                            abriuRetrato = true
                         } label: {
                             Text("Fecha")
                         }
@@ -103,20 +124,24 @@ struct KitchenView: View {
                 }
             }.frame(maxWidth: .infinity)
             
-            VStack(alignment: .trailing) {
-                NavigationLink {
-                    CakeView()
-                } label: {
-                    Image(systemName: "chevron.right")
-                        .foregroundStyle(Color("marrom"))
-                        .bold()
-                        .font(.title)
-                        .frame(width: 75, height: 75)
-                        .background(Color("begezinho"))
+            if (abriuFolhinha == true) && (abriuBarco == true) && (abriuFuba == true) && (abriuRetrato == true) {
+                
+                VStack(alignment: .trailing) {
+                    NavigationLink {
+                        CakeView()
+                    } label: {
+                        Image(systemName: "chevron.right")
+                            .foregroundStyle(Color("marrom"))
+                            .bold()
+                            .font(.title)
+                            .frame(width: 75, height: 75)
+                            .background(Color("begezinho"))
+                    }
                 }
+                .frame(width: 1100, height: 780, alignment: .bottomTrailing)
+                .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
             }
-            .frame(width: 1100, height: 780, alignment: .bottomTrailing)
-            .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
+            
             
             if vovo == true {
                 ZStack {
