@@ -40,11 +40,59 @@ struct PourCakeView: View {
     @StateObject var viewModel = PourCakeViewModel()
 
     var body: some View {
-        Rectangle()
-            .frame(width: 200, height: 200)
-            .rotationEffect(.degrees(viewModel.rotation), anchor: .center)
-            .foregroundStyle(viewModel.isFinished ? .black : .blue)
-        NavigationLink("ir pra tela final", destination: FinalView()).padding()
+        
+        
+        ZStack {
+            Image("pourCake")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .ignoresSafeArea()
+            
+            ZStack {
+                Image("fala")
+                    .resizable()
+                    .scaledToFit()
+                    .scaleEffect(0.6)
+                    .ignoresSafeArea()
+                VStack {
+                    Text("blablablabla nao defini ainda mas vai fala pra virar o ipad")
+                        .multilineTextAlignment(.leading)
+                }
+                .frame(width: 650, height: 250)
+                .offset(CGSize(width: 25, height: 0))
+            }.offset(CGSize(width: -225, height: -270))
+                .padding(.bottom)
+            
+            
+            HStack {
+                
+                Image("formaVazia")
+                    .scaleEffect(0.5)
+                    .offset(CGSize(width: 180, height: 130))
+                
+                Image("liquidCheio")
+                    .scaleEffect(0.5)
+                    .rotationEffect(.degrees(viewModel.rotation), anchor: .center)
+                    .foregroundStyle(viewModel.isFinished ? .black : .blue)
+                
+                
+            }
+            
+            VStack(alignment: .trailing) {
+                NavigationLink {
+                    WaitingView()
+                } label: {
+                    Image(systemName: "chevron.right")
+                        .foregroundStyle(Color("marrom"))
+                        .bold()
+                        .font(.title)
+                        .frame(width: 75, height: 75)
+                        .background(Color("begezinho"))
+                }
+            }
+            .frame(width: 1100, height: 780, alignment: .bottomTrailing)
+            .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
+        }.background(Color("amarelinho"))
         
     }
 }
