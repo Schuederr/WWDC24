@@ -27,10 +27,15 @@ struct WaitingView: View {
                         .font(.title)
                         .frame(width: 75, height: 75)
                         .background(Color("begezinho"))
-                }
+                }.frame(alignment: .bottom)
+                
             }
-            .frame(width: 1100, height: 780, alignment: .bottomTrailing)
+            .padding(50)
             .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
+            .frame(maxWidth: .infinity, alignment: .bottomTrailing)
+            .frame(maxHeight: .infinity)
+            .offset(CGSize(width: 0, height: 300))
+            
         }.background(Color("amarelinho"))
         
     }

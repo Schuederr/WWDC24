@@ -12,6 +12,7 @@ class PourCakeViewModel: ObservableObject {
     @Published var rotation = 0.0
     @Published var isFinished = false
     @Published var timeElapsed = 0.0
+    @Published var isRotating = false
         
     let motionManager = CMMotionManager()
     let motionQueue = OperationQueue()
@@ -25,19 +26,23 @@ class PourCakeViewModel: ObservableObject {
             
             let yRotation = data.attitude.pitch * 180 / Double.pi
 
-            DispatchQueue.main.async {
-                print("rotation: \(self.rotation), yRotation \(yRotation)")
-                self.rotation = yRotation
+            if self.isRotating == true {
                 
-                if self.rotation < -25 {
-                    self.timeElapsed += 0.1
-                    print("timeElapsed: \(self.timeElapsed)")
+                DispatchQueue.main.async {
+                    //                print("rotation: \(self.rotation), yRotation \(yRotation)")
+                    self.rotation = yRotation
                     
-                    if self.timeElapsed >= 50 {
-                        self.isFinished = true
+                    if self.rotation < -25 {
+                        self.timeElapsed += 0.1
+                        //                    print("timeElapsed: \(self.timeElapsed)")
+                        
+                        if self.timeElapsed >= 40 {
+                            self.isFinished = true
+                        }
                     }
                 }
             }
+            
         }
     }
 }

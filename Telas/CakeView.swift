@@ -25,29 +25,25 @@ struct CakeView: View {
     var body: some View {
         
         VStack {
-            HStack {
-                Text("fazer o bolo").padding()
-                NavigationLink("bota bolo na forma", destination: PourCakeView()).padding()
-            }
             
             VStack {
                 LazyVGrid(columns: gridItems) {
                     ForEach(Array(ingredients.enumerated()), id: \.offset) { index, ingredient in
-                            
-                            let xOffset = dragOffsets[index].width
-                            let yOffset = dragOffsets[index].height
-                            
-                            Text(ingredient.title)
-                                .padding()
-                                .offset(x: xOffset,
-                                        y: yOffset)
-                                .gesture(DragGesture()
-                                    .onChanged { value in
-                                        dragOffsets[index] = value.translation
-                                        checkCollision(index: index)
-                                    }
-                                )
-                                .overlay(AbsoluteFrameReader(id: "\(index)"))
+                        
+                        let xOffset = dragOffsets[index].width
+                        let yOffset = dragOffsets[index].height
+                        
+                        Text(ingredient.title)
+                            .padding()
+                            .offset(x: xOffset,
+                                    y: yOffset)
+                            .gesture(DragGesture()
+                                .onChanged { value in
+                                    dragOffsets[index] = value.translation
+                                    checkCollision(index: index)
+                                }
+                            )
+                            .overlay(AbsoluteFrameReader(id: "\(index)"))
                     }
                 }
                 
@@ -62,6 +58,25 @@ struct CakeView: View {
             Button("Reset") {
                 resetOffsets()
             }.padding()
+            
+            VStack(alignment: .trailing) {
+                NavigationLink {
+                    PourCakeView()
+                } label: {
+                    Image(systemName: "chevron.right")
+                        .foregroundStyle(Color("marrom"))
+                        .bold()
+                        .font(.title)
+                        .frame(width: 75, height: 75)
+                        .background(Color("begezinho"))
+                }.frame(alignment: .bottom)
+                
+            }
+//            .padding(50)
+            .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
+//            .frame(maxWidth: .infinity, alignment: .bottomTrailing)
+//            .frame(maxHeight: .infinity)
+//            .offset(CGSize(width: 0, height: 300))
             
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
         .coordinateSpace(name: "AbsoluteFrameReader")
