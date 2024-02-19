@@ -10,25 +10,32 @@ import SwiftUI
 
 struct Ingredient: Codable, Identifiable, Hashable {
     let title: String
-    let image: String
-    let imageVazia: String?
     let id: UUID
     
     static func populateIngredients() -> [Ingredient] {
+        
         var ingredients: [Ingredient] = []
         
-        let farinha = Ingredient(title: "farinha", image: "nada ainda", imageVazia: "xicara", id: UUID())
+        let farinha = Ingredient(title: "farinha", id: UUID())
         ingredients.append(farinha)
         
-        let ovos = Ingredient(title: "ovos", image: "nada ainda", imageVazia: "", id: UUID())
-        ingredients.append(ovos)
+        let ovo = Ingredient(title: "ovo", id: UUID())
+        ingredients.append(ovo)
         
-        let leite = Ingredient(title: "leite", image: "nada ainda", imageVazia: "xicara", id: UUID())
+        let leite = Ingredient(title: "leite", id: UUID())
         ingredients.append(leite)
         
-        let fuba = Ingredient(title: "fuba", image: "nada ainda",  imageVazia: "xicara", id: UUID())
+        let fuba = Ingredient(title: "fuba", id: UUID())
         ingredients.append(fuba)
         
+        let acucar = Ingredient(title: "acucar", id: UUID())
+        ingredients.append(acucar)
+        
+        let fermento = Ingredient(title: "fermento", id: UUID())
+        ingredients.append(fermento)
+        
+        let oleo = Ingredient(title: "oleo", id: UUID())
+        ingredients.append(oleo)
         
         return ingredients
     }

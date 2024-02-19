@@ -58,7 +58,7 @@ struct MsgView: View {
             .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
             .frame(maxWidth: .infinity, alignment: .bottomTrailing)
             .frame(maxHeight: .infinity)
-            .offset(CGSize(width: 0, height: 300))
+            .offset(CGSize(width: 0, height: 325))
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)

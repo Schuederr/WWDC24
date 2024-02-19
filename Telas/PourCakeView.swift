@@ -10,7 +10,7 @@ struct PourCakeView: View {
     var body: some View {
         
         ZStack {
-            Image("pourCake")
+            Image("tableCake")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .ignoresSafeArea()
