@@ -20,8 +20,6 @@ struct CakeView: View {
     
     @State var blenderFrame = CGRect()
     
-    @State var moment = Moments.liquids
-    
     let gridItems = [GridItem(), GridItem()]
     
     var body: some View {
@@ -61,7 +59,6 @@ struct CakeView: View {
                                         .overlay(AbsoluteFrameReader(id: "\(index)"))
                             }
                     }
-                        
                         
                     ZStack(alignment: .trailing) {
                         
@@ -129,11 +126,4 @@ struct CakeView: View {
             collision = true
         }
     }
-    
-    enum Moments {
-        case liquids
-        case solids
-        case powder
-    }
-    
 }

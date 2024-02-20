@@ -14,7 +14,7 @@ struct KitchenView: View {
     @State private var sheetFuba = false
     @State private var sheetRetrato = false
     
-//    @State private var isAnimating: Bool = false
+    @State private var isAnimating: Bool = false
 //    
     @State private var vovo = true
     
@@ -53,12 +53,12 @@ struct KitchenView: View {
                             Text("Fecha")
                         }
                     })
-//                    .onAppear {
-//                        withAnimation(.easeOut(duration: 0.5)) {
-//                            isAnimating = true
-//                            }
-//                        }
-//                    .scaleEffect(isAnimating ? 1.0 : 0.6)
+                    .task {
+                        withAnimation(.easeOut(duration: 0.65).repeatForever()) {
+                            isAnimating = true
+                            }
+                        }
+                    .scaleEffect(isAnimating ? 1.0 : 0.98)
                     
                     Button(action: {
                         sheetBarco.toggle()
@@ -79,6 +79,12 @@ struct KitchenView: View {
                             Text("Fecha")
                         }
                     })
+                    .task {
+                        withAnimation(.easeOut(duration: 0.7).repeatForever()) {
+                            isAnimating = true
+                            }
+                        }
+                    .scaleEffect(isAnimating ? 1.0 : 0.98)
                 }
                 
                 HStack {
@@ -101,6 +107,12 @@ struct KitchenView: View {
                             Text("Fecha")
                         }
                     })
+                    .task {
+                        withAnimation(.easeOut(duration: 0.6).repeatForever()) {
+                            isAnimating = true
+                            }
+                        }
+                    .scaleEffect(isAnimating ? 1.0 : 0.98)
                     
                     Button(action: {
                         sheetRetrato.toggle()
@@ -121,6 +133,12 @@ struct KitchenView: View {
                             Text("Fecha")
                         }
                     })
+                    .task {
+                        withAnimation(.easeOut(duration: 0.75).repeatForever()) {
+                            isAnimating = true
+                            }
+                        }
+                    .scaleEffect(isAnimating ? 1.0 : 0.98)
                 }
             }.frame(maxWidth: .infinity)
             
