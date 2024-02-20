@@ -1,97 +1,167 @@
-//
-//  CakeView.swift
-//  WWDC24
-//
-//  Created by Natalia Schueda on 05/02/24.
-//
-
 import SwiftUI
+
+// this view is pure genius - and stress
 
 struct CakeView: View {
     
     @State var ingredients = Ingredient.populateIngredients()
+    @State var moment = Moment.liquids
     
-    @State private var dragOffsets: [CGSize] = Array(repeating: .zero, count: 10)
-    @State private var frames: [CGRect] = Array(repeating: .zero, count: 10)
-    
-    @State var collision = false
-    
+    @State var dragOffsets: [CGSize] = Array(repeating: .zero, count: 10)
+    @State var frames: [CGRect] = Array(repeating: .zero, count: 10)
+    @State var collisions: [Bool] = Array(repeating: false, count: 10)
     @State var blenderFrame = CGRect()
+    
+    @State var liquidsInBlender: Int = 0
+    @State var solidsInBlender: Int = 0
+    @State var powderInBlender: Int = 0
     
     let gridItems = [GridItem(), GridItem()]
     
     var body: some View {
         
         ZStack {
-            
             Image("tableCake")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .ignoresSafeArea()
             
-            VStack {
-                
-                HStack {
-                    LazyVGrid(columns: gridItems) {
+            HStack {
+                LazyVGrid(columns: gridItems) {
+                    ForEach(Array(ingredients.enumerated()), id: \.offset) { index, ingredient in
+                        let xOffset = dragOffsets[index].width
+                        let yOffset = dragOffsets[index].height
+                        
+                        switch moment {
                             
-                            ForEach(Array(ingredients.enumerated()), id: \.offset) { index, ingredient in
+                        case .liquids:
+                            if ingredient.moment == "liquid" && ingredient.isEgg == false {
                                 
-                                let xOffset = dragOffsets[index].width
-                                let yOffset = dragOffsets[index].height
-                                
-                                    Image(ingredient.title)
-                                        .scaleEffect(0.5)
-                                        .offset(x: xOffset,
-                                                y: yOffset)
-                                        .frame(width: 50, height: 50)
-                                        .padding()
-                                        .gesture(DragGesture()
-                                            .onChanged { value in
-                                                dragOffsets[index] = value.translation
-                                                checkCollision(index: index)
-                                                if collision == true {
-//                                                    resetOffsets()
+                                Image(collisions[index] ? "xicara" : ingredient.title)
+                                    .scaleEffect(0.5)
+                                    .offset(x: xOffset,
+                                            y: yOffset)
+                                    .frame(width: 50, height: 50)
+                                    .padding()
+                                    .gesture(DragGesture()
+                                        .onChanged { value in
+                                            dragOffsets[index] = value.translation
+                                            checkCollision(index: index)
+                                            if collisions[index] == true {
+                                                resetOffsets(index: index)
+                                                liquidsInBlender += 1
+                                                if liquidsInBlender == 5 {
+                                                    moment = .solids
                                                 }
                                             }
-                                        )
-                                        .overlay(AbsoluteFrameReader(id: "\(index)"))
+                                        }
+                                    )
+                                    .disabled(collisions[index])
+                                    .overlay(AbsoluteFrameReader(id: "\(index)"))
                             }
+                            
+                            if ingredient.moment == "liquid" && ingredient.isEgg == true {
+
+                                Image(collisions[index] ? "ovoQuebrado" : ingredient.title)
+                                    .scaleEffect(0.5)
+                                    .offset(x: xOffset,
+                                            y: yOffset)
+                                    .frame(width: 50, height: 50)
+                                    .padding()
+                                    .gesture(DragGesture()
+                                        .onChanged { value in
+                                            dragOffsets[index] = value.translation
+                                            checkCollision(index: index)
+                                            if collisions[index] == true {
+                                                resetOffsets(index: index)
+                                                liquidsInBlender += 1
+                                                if liquidsInBlender == 5 {
+                                                    moment = .solids
+                                                }
+                                            }
+                                        }
+                                    )
+                                    .disabled(collisions[index])
+                                    .overlay(AbsoluteFrameReader(id: "\(index)"))
+                            }
+                            
+                            
+                        case .solids:
+                            if ingredient.moment == "solid" {
+                                Image(collisions[index] ? "xicara" : ingredient.title)
+                                    .scaleEffect(0.5)
+                                    .offset(x: xOffset,
+                                            y: yOffset)
+                                    .frame(width: 50, height: 50)
+                                    .padding()
+                                    .gesture(DragGesture()
+                                        .onChanged { value in
+                                            dragOffsets[index] = value.translation
+                                            checkCollision(index: index)
+                                            if collisions[index] == true {
+                                                resetOffsets(index: index)
+                                                solidsInBlender += 1
+                                                if solidsInBlender == 3 {
+                                                    moment = .powder
+                                                }
+                                            }
+                                        }
+                                    )
+                                    .disabled(collisions[index])
+                                    .overlay(AbsoluteFrameReader(id: "\(index)"))
+                            }
+                            
+                            
+                        case .powder:
+                            if ingredient.moment == "powder" {
+                                Image(collisions[index] ? "colher" : ingredient.title)
+                                    .scaleEffect(0.5)
+                                    .offset(x: xOffset,
+                                            y: yOffset)
+                                    .frame(width: 50, height: 50)
+                                    .padding()
+                                    .gesture(DragGesture()
+                                        .onChanged { value in
+                                            dragOffsets[index] = value.translation
+                                            checkCollision(index: index)
+                                            if collisions[index] == true {
+                                                resetOffsets(index: index)
+                                                powderInBlender += 1
+                                            }
+                                        }
+                                    )
+                                    .disabled(collisions[index])
+                                    .overlay(AbsoluteFrameReader(id: "\(index)"))
+                            }
+                        }
                     }
-                        
-                    ZStack(alignment: .trailing) {
-                        
-                        Image("liquidMaquina")
-                            .scaleEffect(0.5)
-                            .opacity(0.2)
-                        
-                    }
-                    .frame(width: 150, height: 320)
-                    .background(collision ? .red: .blue)
-                    .overlay(AbsoluteFrameReader(id: "blender"))
                 }
                 
-                Button(action: {
-                    resetOffsets()
-                }, label: {
-                    Text("Reset")
-                        .foregroundStyle(.black)
-                        .background()
-                })
+                ZStack(alignment: .trailing) {
+                    Image("liquidMaquina")
+                        .scaleEffect(0.5)
+                }
+                .frame(width: 150, height: 320)
+                .overlay(AbsoluteFrameReader(id: "blender"))
                 
+                // NavigationLink
                 VStack(alignment: .trailing) {
-                    NavigationLink {
-                        PourCakeView()
-                    } label: {
-                        Image(systemName: "chevron.right")
-                            .foregroundStyle(Color("marrom"))
-                            .bold()
-                            .font(.title)
-                            .frame(width: 75, height: 75)
-                            .background(Color("begezinho"))
-                    }.frame(alignment: .bottom)
-                    
+                    if powderInBlender == 1 {
+                        NavigationLink {
+                            PourCakeView()
+                        } label: {
+                            Image(systemName: "chevron.right")
+                                .foregroundStyle(Color("marrom"))
+                                .bold()
+                                .font(.title)
+                                .frame(width: 75, height: 75)
+                                .background(Color("begezinho"))
+                        }
+                        .frame(alignment: .bottom)
+                        .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
+                    }
                 }
-                .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
+                
                 
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
                 .coordinateSpace(name: "AbsoluteFrameReader")
@@ -105,13 +175,18 @@ struct CakeView: View {
                         }
                     }
                 })
+            
+            
         }.background(Color("amarelinho"))
     }
-        
     
-    private func resetOffsets() {
-        dragOffsets = Array(repeating: .zero, count: 10)
-        collision = false
+    
+    // functions and enum
+    
+    private func resetOffsets(index: Int) {
+        dragOffsets[index].width = 0
+        dragOffsets[index].height = 0
+        collisions[index] = true
     }
     
     private func checkCollision(index: Int) {
@@ -121,7 +196,16 @@ struct CakeView: View {
         print("ingredientFrame: \(ingredientFrame)")
         
         if ingredientFrame.intersects(blenderFrame) {
-            collision = true
+            collisions[index] = true
+        } else {
+            collisions[index] = false
         }
     }
+    
+    enum Moment {
+        case liquids
+        case solids
+        case powder
+    }
+    
 }

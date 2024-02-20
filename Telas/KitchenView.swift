@@ -39,7 +39,7 @@ struct KitchenView: View {
                     }, label: {
                         Image("folhinha")
                             .scaleEffect(0.5)
-                            .blur(radius: abriuFolhinha ? 2.0 : 0.0)
+                            .blur(radius: abriuFolhinha ? 3.0 : 0.0)
                     })
                     .frame(width: 120, height: 220)
                     .offset(CGSize(width: -150, height: -150))
@@ -65,7 +65,7 @@ struct KitchenView: View {
                     }, label: {
                         Image("barco")
                             .scaleEffect(0.5)
-                            .blur(radius: abriuBarco ? 2.0 : 0.0)
+                            .blur(radius: abriuBarco ? 3.0 : 0.0)
                     })
                     .frame(width: 140, height: 225)
                     .offset(CGSize(width: 250, height: -100))
@@ -93,7 +93,7 @@ struct KitchenView: View {
                     }, label: {
                         Image("sacoFuba")
                             .scaleEffect(0.5)
-                            .blur(radius: abriuFuba ? 2.0 : 0.0)
+                            .blur(radius: abriuFuba ? 3.0 : 0.0)
                     })
                     .frame(width: 135, height: 165)
                     .offset(CGSize(width: -20, height: -60))
@@ -119,7 +119,7 @@ struct KitchenView: View {
                     }, label: {
                         Image("retrato")
                             .scaleEffect(0.5)
-                            .blur(radius: abriuRetrato ? 2.0 : 0.0)
+                            .blur(radius: abriuRetrato ? 3.0 : 0.0)
                     })
                     .frame(width: 140, height: 50)
                     .offset(CGSize(width: 350, height: -10))
