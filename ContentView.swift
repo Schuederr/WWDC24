@@ -2,8 +2,79 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationStack {
-            CakeView()
+            
+            ZStack {
+                //images
+                VStack{
+                    HStack {
+                        Image("milho")
+                            .frame(width: 400, height: 400)
+                            .scaleEffect(0.7)
+                            .edgesIgnoringSafeArea(.all)
+                        Spacer()
+                    }
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Image("formaVazia")
+                            .frame(width: 340, height: 200)
+                            .scaleEffect(0.7)
+                            .rotationEffect(Angle(degrees: -25))
+                            .edgesIgnoringSafeArea(.all)
+                    }
+                }
+                
+                // text, title and button
+                VStack {
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            ///fazer parar musica aqui
+                        }, label: {
+                            Image(systemName: "speaker.slash")
+                                .font(.largeTitle)
+                                .bold()
+                                .foregroundStyle(Color("marrom"))
+                                .padding(.trailing, 40)
+                                .padding(.top, 24)
+                        })
+                    }
+                    HStack(alignment: .center) {
+                        Image(systemName: "ipad.landscape")
+                            .symbolRenderingMode(.monochrome)
+                            .foregroundStyle(Color("marrom"))
+                            .padding(.trailing, 2)
+                        Text("Please use landscape orientation")
+                            .foregroundStyle(Color("marrom"))
+                    }.frame(alignment: .center)
+                        .padding(.bottom, 40)
+                    
+                    Image("titulo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .scaleEffect(0.7)
+                        .padding(32)
+
+                    /// fazer sombra (do jeito certo) e botar fonte
+                    
+                    NavigationLink {
+                        MsgView()
+                    } label: {
+                            VStack {
+                                Text("START")
+                                    .font(.custom("VastShadow", size: 36))
+                                    .foregroundStyle(Color("marrom"))
+                            }
+                            .frame(width: 250, height: 75)
+                        .background(Color("begezinho"))
+                        .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
+                    }
+                    Spacer()
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .frame(maxHeight: .infinity)
+            .background(Color("amarelo"))
         }
     }
-}
+

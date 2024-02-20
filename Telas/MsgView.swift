@@ -10,14 +10,59 @@ import SwiftUI
 struct MsgView: View {
     @State private var isShowingSheet = false
     
+    /// fazer sombra e animação da aparição das imagens
+    
     var body: some View {
-        VStack {
+        
+        ZStack {
             
-            Text("Começo").padding()
+            Image("backMsg")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+//                .scaleEffect(0.5)
             
-            NavigationLink("Ir para tela da cozinha", destination: KitchenView()).padding()
+            ZStack {
+                Image("cerola")
+                    .scaleEffect(0.55)
+                VStack {
+                    Image("msg1")
+                        .scaleEffect(0.5)
+                        .position(CGPoint(x: 160, y: 65))
+                    Image("msg2")
+                        .scaleEffect(0.5)
+                        .position(CGPoint(x: 80, y: 0))
+                    Image("msg3")
+                        .scaleEffect(0.5)
+                        .position(CGPoint(x: 125, y: -70))
+                    Image("msg4")
+                        .scaleEffect(0.5)
+                        .position(CGPoint(x: 160, y: -140))
+                }
+                .frame(width: 300, height: 500)
+            }
+            
+            VStack(alignment: .trailing) {
+                NavigationLink {
+                    KitchenView()
+                } label: {
+                    Image(systemName: "chevron.right")
+                        .foregroundStyle(Color("marrom"))
+                        .bold()
+                        .font(.title)
+                        .frame(width: 75, height: 75)
+                        .background(Color("begezinho"))
+                }.frame(alignment: .bottom)
+                
+            }
+            .padding(50)
+            .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
+            .frame(maxWidth: .infinity, alignment: .bottomTrailing)
+            .frame(maxHeight: .infinity)
+            .offset(CGSize(width: 0, height: 325))
             
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
+        .background(Color("amarelo"))
     }
 }
 
