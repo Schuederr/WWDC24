@@ -18,9 +18,11 @@ struct CakeView: View {
     
     @State var collision = false
     
-    @State var oiFrame = CGRect()
+    @State var blenderFrame = CGRect()
     
-    let gridItems = [GridItem(), GridItem(), GridItem()]
+    @State var moment = Moments.start
+    
+    let gridItems = [GridItem(), GridItem()]
     
     var body: some View {
         
@@ -33,42 +35,106 @@ struct CakeView: View {
             
             VStack {
                 
-                VStack {
+                HStack {
                     LazyVGrid(columns: gridItems) {
+                        
+//                        switch moment {
+//                        case .start:
+//                        }
+                        
                         ForEach(Array(ingredients.enumerated()), id: \.offset) { index, ingredient in
                             
                             let xOffset = dragOffsets[index].width
                             let yOffset = dragOffsets[index].height
                             
-                            Image(ingredient.title)
-                                .scaleEffect(0.5)
-                                .offset(x: xOffset,
-                                        y: yOffset)
-                                .gesture(DragGesture()
-                                    .onChanged { value in
-                                        dragOffsets[index] = value.translation
-                                        checkCollision(index: index)
-                                    }
-                                )
-                                .overlay(AbsoluteFrameReader(id: "\(index)"))
+                            if ingredient.xicara == true {
+                                Image(collision ? "xicara" : ingredient.title)
+                                    .scaleEffect(0.5)
+                                    .offset(x: xOffset,
+                                            y: yOffset)
+                                    .frame(width: 50, height: 50)
+                                    .padding()
+                                    .gesture(DragGesture()
+                                        .onChanged { value in
+                                            dragOffsets[index] = value.translation
+                                            checkCollision(index: index)
+                                            if collision == true {
+//                                                resetOffsets()
+                                            }
+                                        }
+                                    )
+                                    .overlay(AbsoluteFrameReader(id: "\(index)"))
+                            }
+                            
+                            if ingredient.title == "ovo" {
+                                
+                                var numCollision = 0
+                                
+                                Image(collision ? "" : ingredient.title)
+                                    .scaleEffect(0.5)
+                                    .offset(x: xOffset,
+                                            y: yOffset)
+                                    .frame(width: 50, height: 50)
+                                    .padding()
+                                    .gesture(DragGesture()
+                                        .onChanged { value in
+                                            dragOffsets[index] = value.translation
+                                            checkCollision(index: index)
+                                            if collision == true {
+//                                                resetOffsets()
+                                                numCollision += 1
+                                            }
+                                            
+                                            if numCollision == 3 {
+                                                
+                                            }
+                                        }
+                                    )
+                                    .overlay(AbsoluteFrameReader(id: "\(index)"))
+                            }
+                            
+                            if ingredient.title == "fermento" {
+                                Image(collision ? "colher" : ingredient.title)
+                                    .scaleEffect(0.5)
+                                    .offset(x: xOffset,
+                                            y: yOffset)
+                                    .frame(width: 50, height: 50)
+                                    .padding()
+                                    .gesture(DragGesture()
+                                        .onChanged { value in
+                                            dragOffsets[index] = value.translation
+                                            checkCollision(index: index)
+                                            if collision == true {
+//                                                resetOffsets()
+                                            }
+                                        }
+                                    )
+                                    .overlay(AbsoluteFrameReader(id: "\(index)"))
+                            }
                         }
                     }
                     
-                    ZStack{
+                        
+                        
+                    ZStack(alignment: .trailing) {
                         
                         Image("liquidMaquina")
                             .scaleEffect(0.5)
+                            .opacity(0.2)
                         
-                        Text("oi")
                     }
-                    .frame(width: 100, height: 100)
-                    .overlay(AbsoluteFrameReader(id: "oi"))
+                    .frame(width: 150, height: 320)
                     .background(collision ? .red: .blue)
+                    .overlay(AbsoluteFrameReader(id: "blender"))
                 }
                 
-                Button("Reset") {
+                Button(action: {
                     resetOffsets()
-                }.padding()
+                }, label: {
+                    Text("Reset")
+                        .foregroundStyle(.black)
+                        .background()
+                })
                 
                 VStack(alignment: .trailing) {
                     NavigationLink {
@@ -92,8 +158,8 @@ struct CakeView: View {
                         if let i = Int(v.id) {
                             frames[i] = v.absoluteFrame
                         }
-                        if v.id == "oi" {
-                            oiFrame = v.absoluteFrame
+                        if v.id == "blender" {
+                            blenderFrame = v.absoluteFrame
                         }
                     }
                 })
@@ -111,13 +177,19 @@ struct CakeView: View {
     private func checkCollision(index: Int) {
         let ingredientFrame = frames[index].offsetBy(dx: dragOffsets[index].width, dy: dragOffsets[index].height)
         
-        print("oi frame: \(oiFrame)")
+        print("blender frame: \(blenderFrame)")
         print("ingredientFrame: \(ingredientFrame)")
         
-        if ingredientFrame.intersects(oiFrame) {
+        if ingredientFrame.intersects(blenderFrame) {
             collision = true
         }
     }
     
+    enum Moments {
+        case start
+        case liquids
+        case solids
+        case powder
+    }
     
 }

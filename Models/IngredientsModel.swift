@@ -10,32 +10,34 @@ import SwiftUI
 
 struct Ingredient: Codable, Identifiable, Hashable {
     let title: String
+    let moment: Int
+    let xicara: Bool
     let id: UUID
     
     static func populateIngredients() -> [Ingredient] {
         
         var ingredients: [Ingredient] = []
         
-        let farinha = Ingredient(title: "farinha", id: UUID())
+        let farinha = Ingredient(title: "farinha", moment: 2, xicara: true, id: UUID())
         ingredients.append(farinha)
         
-        let ovo = Ingredient(title: "ovo", id: UUID())
-        ingredients.append(ovo)
-        
-        let leite = Ingredient(title: "leite", id: UUID())
+        let leite = Ingredient(title: "leite", moment: 1, xicara: true, id: UUID())
         ingredients.append(leite)
         
-        let fuba = Ingredient(title: "fuba", id: UUID())
+        let fuba = Ingredient(title: "fuba", moment: 2, xicara: true, id: UUID())
         ingredients.append(fuba)
         
-        let acucar = Ingredient(title: "acucar", id: UUID())
+        let acucar = Ingredient(title: "acucar", moment: 2, xicara: true, id: UUID())
         ingredients.append(acucar)
         
-        let fermento = Ingredient(title: "fermento", id: UUID())
-        ingredients.append(fermento)
-        
-        let oleo = Ingredient(title: "oleo", id: UUID())
+        let oleo = Ingredient(title: "oleo", moment: 1, xicara: true, id: UUID())
         ingredients.append(oleo)
+        
+        let ovo = Ingredient(title: "ovo", moment: 1, xicara: false, id: UUID())
+        ingredients.append(ovo)
+        
+        let fermento = Ingredient(title: "fermento", moment: 3, xicara: false, id: UUID())
+        ingredients.append(fermento)
         
         return ingredients
     }

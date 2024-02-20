@@ -16,6 +16,7 @@ struct AbsoluteFrameReader: View {
             
             Rectangle()
                 .fill(Color.clear)
+                .frame(width: 50, height: 50)
                 .preference(
                     key: AbsoluteFrameKey.self,
                     value: [AbsoluteFrameValue(id: id, absoluteFrame: absoluteFrame)]
