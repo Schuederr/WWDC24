@@ -9,8 +9,6 @@ import SwiftUI
 
 struct CakeView: View {
     
-    // falta: botao reset e fazer detectar o frame e nao o ponto
-    
     @State var ingredients = Ingredient.populateIngredients()
     
     @State private var dragOffsets: [CGSize] = Array(repeating: .zero, count: 10)
