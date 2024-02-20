@@ -20,7 +20,7 @@ struct CakeView: View {
     
     @State var blenderFrame = CGRect()
     
-    @State var moment = Moments.start
+    @State var moment = Moments.liquids
     
     let gridItems = [GridItem(), GridItem()]
     
@@ -37,83 +37,30 @@ struct CakeView: View {
                 
                 HStack {
                     LazyVGrid(columns: gridItems) {
-                        
-//                        switch moment {
-//                        case .start:
-//                        }
-                        
-                        ForEach(Array(ingredients.enumerated()), id: \.offset) { index, ingredient in
                             
-                            let xOffset = dragOffsets[index].width
-                            let yOffset = dragOffsets[index].height
-                            
-                            if ingredient.xicara == true {
-                                Image(collision ? "xicara" : ingredient.title)
-                                    .scaleEffect(0.5)
-                                    .offset(x: xOffset,
-                                            y: yOffset)
-                                    .frame(width: 50, height: 50)
-                                    .padding()
-                                    .gesture(DragGesture()
-                                        .onChanged { value in
-                                            dragOffsets[index] = value.translation
-                                            checkCollision(index: index)
-                                            if collision == true {
-//                                                resetOffsets()
-                                            }
-                                        }
-                                    )
-                                    .overlay(AbsoluteFrameReader(id: "\(index)"))
-                            }
-                            
-                            if ingredient.title == "ovo" {
+                            ForEach(Array(ingredients.enumerated()), id: \.offset) { index, ingredient in
                                 
-                                var numCollision = 0
+                                let xOffset = dragOffsets[index].width
+                                let yOffset = dragOffsets[index].height
                                 
-                                Image(collision ? "" : ingredient.title)
-                                    .scaleEffect(0.5)
-                                    .offset(x: xOffset,
-                                            y: yOffset)
-                                    .frame(width: 50, height: 50)
-                                    .padding()
-                                    .gesture(DragGesture()
-                                        .onChanged { value in
-                                            dragOffsets[index] = value.translation
-                                            checkCollision(index: index)
-                                            if collision == true {
-//                                                resetOffsets()
-                                                numCollision += 1
+                                    Image(ingredient.title)
+                                        .scaleEffect(0.5)
+                                        .offset(x: xOffset,
+                                                y: yOffset)
+                                        .frame(width: 50, height: 50)
+                                        .padding()
+                                        .gesture(DragGesture()
+                                            .onChanged { value in
+                                                dragOffsets[index] = value.translation
+                                                checkCollision(index: index)
+                                                if collision == true {
+//                                                    resetOffsets()
+                                                }
                                             }
-                                            
-                                            if numCollision == 3 {
-                                                
-                                            }
-                                        }
-                                    )
-                                    .overlay(AbsoluteFrameReader(id: "\(index)"))
+                                        )
+                                        .overlay(AbsoluteFrameReader(id: "\(index)"))
                             }
-                            
-                            if ingredient.title == "fermento" {
-                                Image(collision ? "colher" : ingredient.title)
-                                    .scaleEffect(0.5)
-                                    .offset(x: xOffset,
-                                            y: yOffset)
-                                    .frame(width: 50, height: 50)
-                                    .padding()
-                                    .gesture(DragGesture()
-                                        .onChanged { value in
-                                            dragOffsets[index] = value.translation
-                                            checkCollision(index: index)
-                                            if collision == true {
-//                                                resetOffsets()
-                                            }
-                                        }
-                                    )
-                                    .overlay(AbsoluteFrameReader(id: "\(index)"))
-                            }
-                        }
                     }
-                    
                         
                         
                     ZStack(alignment: .trailing) {
@@ -167,8 +114,6 @@ struct CakeView: View {
     }
         
     
-    
-    
     private func resetOffsets() {
         dragOffsets = Array(repeating: .zero, count: 10)
         collision = false
@@ -186,7 +131,6 @@ struct CakeView: View {
     }
     
     enum Moments {
-        case start
         case liquids
         case solids
         case powder
