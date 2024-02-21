@@ -8,20 +8,20 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "wwdc24",
+    name: "Fubá",
     platforms: [
         .iOS("16.0")
     ],
     products: [
         .iOSApplication(
-            name: "wwdc24",
+            name: "Fubá",
             targets: ["AppModule"],
             bundleIdentifier: "natalia.wwdc24",
             teamIdentifier: "UZBLYXW5RV",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .sun),
-            accentColor: .presetColor(.green),
+            appIcon: .asset("AppIcon"),
+            accentColor: .presetColor(.brown),
             supportedDeviceFamilies: [
                 .pad,
                 .phone
