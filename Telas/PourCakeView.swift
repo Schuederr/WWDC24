@@ -8,7 +8,6 @@ struct PourCakeView: View {
     @State private var jaClicou = false
 
     var body: some View {
-        
         ZStack {
             Image("tableCake")
                 .resizable()
@@ -79,6 +78,7 @@ struct PourCakeView: View {
                         VStack {
                             Text("blablablabla nao defini ainda mas vai fala pra virar o ipad")
                                 .multilineTextAlignment(.leading)
+                                .foregroundStyle(Color("marrom"))
                         }
                         .frame(width: 650, height: 250)
                         .offset(CGSize(width: 25, height: 0))

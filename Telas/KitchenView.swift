@@ -24,9 +24,7 @@ struct KitchenView: View {
     @State private var abriuRetrato = false
     
     var body: some View {
-        
         ZStack {
-            
             Image("cozinha")
                 .resizable()
                 .aspectRatio(contentMode: .fill)

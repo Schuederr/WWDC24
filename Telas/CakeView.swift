@@ -14,12 +14,16 @@ struct CakeView: View {
     
     @State var liquidsInBlender: Int = 0
     @State var solidsInBlender: Int = 0
-    @State var powderInBlender: Int = 0
+    
+    @State var blend = false
+    @State var blenderFull = false
+    @State var blenderWorking = false
+    @State var blenderWorking2 = false
+    @State var blenderDone = false
     
     let gridItems = [GridItem(), GridItem()]
     
     var body: some View {
-        
         ZStack {
             Image("tableCake")
                 .resizable()
@@ -61,7 +65,7 @@ struct CakeView: View {
                             }
                             
                             if ingredient.moment == "liquid" && ingredient.isEgg == true {
-
+                                
                                 Image(collisions[index] ? "ovoQuebrado" : ingredient.title)
                                     .scaleEffect(0.5)
                                     .offset(x: xOffset,
@@ -114,54 +118,72 @@ struct CakeView: View {
                             
                         case .powder:
                             if ingredient.moment == "powder" {
-                                Image(collisions[index] ? "colher" : ingredient.title)
-                                    .scaleEffect(0.7)
-                                    .offset(x: xOffset,
-                                            y: yOffset)
-                                    .frame(width: 50, height: 50)
-                                    .padding()
-                                    .gesture(DragGesture()
-                                        .onChanged { value in
-                                            dragOffsets[index] = value.translation
-                                            checkCollision(index: index)
-                                            if collisions[index] == true {
-                                                resetOffsets(index: index)
-                                                powderInBlender += 1
+                                if blend == false {
+                                    Image(collisions[index] ? "colher" : ingredient.title)
+                                        .scaleEffect(0.7)
+                                        .offset(x: xOffset,
+                                                y: yOffset)
+                                        .frame(width: 50, height: 50)
+                                        .padding()
+                                        .gesture(DragGesture()
+                                            .onChanged { value in
+                                                dragOffsets[index] = value.translation
+                                                checkCollision(index: index)
+                                                if collisions[index] == true {
+                                                    resetOffsets(index: index)
+                                                    blend = true
+                                                    blenderFull = true
+                                                }
                                             }
-                                        }
-                                    )
-                                    .disabled(collisions[index])
-                                    .overlay(AbsoluteFrameReader(id: "\(index)"))
+                                        )
+                                        .disabled(collisions[index])
+                                        .overlay(AbsoluteFrameReader(id: "\(index)"))
+                                }
                             }
                         }
                     }
                 }
                 
-                ZStack(alignment: .trailing) {
-                    Image("liquidMaquina")
-                        .scaleEffect(0.5)
-                }
-                .frame(width: 150, height: 320)
-                .overlay(AbsoluteFrameReader(id: "blender"))
                 
-                // NavigationLink
-                VStack(alignment: .trailing) {
-                    if powderInBlender == 1 {
-                        NavigationLink {
-                            PourCakeView()
-                        } label: {
-                            Image(systemName: "chevron.right")
-                                .foregroundStyle(Color("marrom"))
-                                .bold()
-                                .font(.title)
-                                .frame(width: 75, height: 75)
-                                .background(Color("begezinho"))
+                if blend == true {
+                    ZStack {
+                        if blenderFull {
+                            Image("liquidCheioMaquina")
+                                .scaleEffect(0.5)
+                        } else if blenderWorking {
+                            Image("liquidBatendo")
+                                .scaleEffect(0.5)
+                        } else if blenderWorking2 {
+                            Image("liquidBatendoPronto")
+                                .scaleEffect(0.5)
+                        } else if blenderDone {
+                            Image("liquidBatidoCheioMaquina")
+                                .scaleEffect(0.5)
                         }
-                        .frame(alignment: .bottom)
-                        .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
                     }
+                    .frame(width: 150, height: 320)
+                    .overlay(AbsoluteFrameReader(id: "blender"))
+                    .onTapGesture {
+                        blenderFull = false
+                        blenderWorking = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            blenderWorking = false
+                            blenderWorking2 = true
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                            blenderWorking2 = false
+                            blenderDone = true
+                        }
+                    }
+                    
+                } else {
+                    ZStack(alignment: .trailing) {
+                        Image("liquidMaquina")
+                            .scaleEffect(0.5)
+                    }
+                    .frame(width: 150, height: 320)
+                    .overlay(AbsoluteFrameReader(id: "blender"))
                 }
-                
                 
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
                 .coordinateSpace(name: "AbsoluteFrameReader")
@@ -176,6 +198,25 @@ struct CakeView: View {
                     }
                 })
             
+            // NavigationLink
+            VStack(alignment: .trailing) {
+                if blenderDone == true {
+                    NavigationLink {
+                        PourCakeView()
+                    } label: {
+                        Image(systemName: "chevron.right")
+                            .foregroundStyle(Color("marrom"))
+                            .bold()
+                            .font(.title)
+                            .frame(width: 75, height: 75)
+                            .background(Color("begezinho"))
+                    }
+                    .padding(50)
+                    .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
+                    .frame(maxWidth: .infinity, alignment: .bottomTrailing)
+                    .offset(CGSize(width: 0, height: 350))
+                }
+            }
             
         }.background(Color("amarelinho"))
     }
@@ -192,8 +233,8 @@ struct CakeView: View {
     private func checkCollision(index: Int) {
         let ingredientFrame = frames[index].offsetBy(dx: dragOffsets[index].width, dy: dragOffsets[index].height)
         
-//        print("blender frame: \(blenderFrame)")
-//        print("ingredientFrame: \(ingredientFrame)")
+        //        print("blender frame: \(blenderFrame)")
+        //        print("ingredientFrame: \(ingredientFrame)")
         
         if ingredientFrame.intersects(blenderFrame) {
             collisions[index] = true

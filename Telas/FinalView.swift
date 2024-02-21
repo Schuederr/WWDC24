@@ -14,7 +14,6 @@ struct FinalView: View {
     
     var body: some View {
         ZStack {
-            
             Image("final")
                 .resizable()
                 .aspectRatio(contentMode: .fill)

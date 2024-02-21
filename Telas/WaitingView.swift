@@ -15,7 +15,6 @@ struct WaitingView: View {
     var body: some View {
         
         ZStack {
-            
             Image("cozinha")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
