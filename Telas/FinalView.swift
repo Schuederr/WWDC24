@@ -29,6 +29,7 @@ struct FinalView: View {
                 
                 VStack {
                     Text("acabou tchau")
+                        .foregroundStyle(Color("marrom"))
                         .multilineTextAlignment(.leading)
                 }
                 .frame(width: 500, height: 200)

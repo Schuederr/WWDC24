@@ -71,6 +71,7 @@ struct WaitingView: View {
                                 .ignoresSafeArea()
                             VStack {
                                 Text("ta no forno pera ai")
+                                    .foregroundStyle(Color("marrom"))
                                     .multilineTextAlignment(.leading)
                             }
                             .frame(width: 500, height: 200)

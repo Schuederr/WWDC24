@@ -195,6 +195,7 @@ struct KitchenView: View {
                             VStack {
                                 Text("blablablabla nao defini ainda mas toca na tela pra pode mexe na cozinha")
                                     .multilineTextAlignment(.leading)
+                                    .foregroundStyle(Color("marrom"))
                             }
                             .frame(width: 500, height: 200)
 //                            .background()
