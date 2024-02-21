@@ -10,9 +10,9 @@ import CoreMotion
 
 class PourCakeViewModel: ObservableObject {
     @Published var rotation = 0.0
-    @Published var isFinished = false
     @Published var timeElapsed = 0.0
     @Published var isRotating = false
+    @Published var isFinished = true
         
     let motionManager = CMMotionManager()
     let motionQueue = OperationQueue()
