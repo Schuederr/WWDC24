@@ -10,62 +10,84 @@ import SwiftUI
 struct MsgView: View {
     @State private var isShowingSheet = false
     
-    /// fazer sombra e animação da aparição das imagens
+    @State private var mensagem = Mensagem.hi
+    
+    /// fazer animação da aparição das imagens
     
     var body: some View {
-        
         ZStack {
-            
             Image("backMsg")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-//                .scaleEffect(0.5)
             
             ZStack {
-                Image("cerola")
+                Image("celular")
                     .scaleEffect(0.55)
-                VStack {
-                    Image("msg1")
-                        .scaleEffect(0.5)
-                        .position(CGPoint(x: 160, y: 65))
+                Image("msg1")
+                    .scaleEffect(0.5)
+                    .offset(CGSize(width: 0, height: -175))
+                if mensagem != .hi {
                     Image("msg2")
                         .scaleEffect(0.5)
-                        .position(CGPoint(x: 80, y: 0))
+                        .offset(CGSize(width: -60, height: -118))
+                }
+                if mensagem != .hi && mensagem != .hi2 {
                     Image("msg3")
                         .scaleEffect(0.5)
-                        .position(CGPoint(x: 125, y: -70))
+                        .offset(CGSize(width: -25, height: -65))
+                }
+                if mensagem == .seeYa {
                     Image("msg4")
                         .scaleEffect(0.5)
-                        .position(CGPoint(x: 160, y: -140))
+                        .offset(CGSize(width: 00, height: -7))
                 }
-                .frame(width: 300, height: 500)
+            
+            }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    mensagem = Mensagem.hi2
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                    mensagem = Mensagem.bolo
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 7.5) {
+                    mensagem = Mensagem.seeYa
+                }
             }
             
-            VStack(alignment: .trailing) {
-                NavigationLink {
-                    KitchenView()
-                } label: {
-                    Image(systemName: "chevron.right")
-                        .foregroundStyle(Color("marrom"))
-                        .bold()
-                        .font(.title)
-                        .frame(width: 75, height: 75)
-                        .background(Color("begezinho"))
-                }.frame(alignment: .bottom)
-                
+            if mensagem == Mensagem.seeYa {
+                VStack(alignment: .trailing) {
+                    NavigationLink {
+                        KitchenView()
+                    } label: {
+                        Image(systemName: "chevron.right")
+                            .foregroundStyle(Color("marrom"))
+                            .bold()
+                            .font(.title)
+                            .frame(width: 75, height: 75)
+                            .background(Color("begezinho"))
+                    }.frame(alignment: .bottom)
+                    
+                }
+                .padding(50)
+                .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
+                .frame(maxWidth: .infinity, alignment: .bottomTrailing)
+                .frame(maxHeight: .infinity)
+                .offset(CGSize(width: 0, height: 325))
             }
-            .padding(50)
-            .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
-            .frame(maxWidth: .infinity, alignment: .bottomTrailing)
-            .frame(maxHeight: .infinity)
-            .offset(CGSize(width: 0, height: 325))
+            
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
         .background(Color("amarelo"))
+        
+    }
+
+    enum Mensagem {
+        case hi
+        case hi2
+        case bolo
+        case seeYa
     }
 }
 
-#Preview {
-    MsgView()
-}

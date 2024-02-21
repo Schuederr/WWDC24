@@ -176,6 +176,22 @@ struct CakeView: View {
                         }
                     }
                     
+                } else if moment == .solids {
+                    ZStack(alignment: .trailing) {
+                        Image("liquidMetadeMaquina")
+                            .scaleEffect(0.5)
+                    }
+                    .frame(width: 150, height: 320)
+                    .overlay(AbsoluteFrameReader(id: "blender"))
+                    
+                } else if moment == .powder {
+                    ZStack(alignment: .trailing) {
+                        Image("liquidCheioMaquina")
+                            .scaleEffect(0.5)
+                    }
+                    .frame(width: 150, height: 320)
+                    .overlay(AbsoluteFrameReader(id: "blender"))
+                    
                 } else {
                     ZStack(alignment: .trailing) {
                         Image("liquidMaquina")
