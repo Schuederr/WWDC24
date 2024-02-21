@@ -29,11 +29,15 @@ struct KitchenView: View {
             
             Image("cozinha")
                 .resizable()
+                .aspectRatio(contentMode: .fill)
                 .ignoresSafeArea()
             
             //buttons
             VStack {
+                
                 HStack {
+                    
+                    //folhinha
                     Button(action: {
                         sheetFolhinha.toggle()
                     }, label: {
@@ -54,12 +58,13 @@ struct KitchenView: View {
                         }
                     })
                     .task {
-                        withAnimation(.easeOut(duration: 0.65).repeatForever()) {
+                        withAnimation(.bouncy(duration: 0.65).repeatForever()) {
                             isAnimating = true
                             }
                         }
                     .scaleEffect(isAnimating ? 1.0 : 0.98)
                     
+                    //barco
                     Button(action: {
                         sheetBarco.toggle()
                     }, label: {
@@ -80,7 +85,7 @@ struct KitchenView: View {
                         }
                     })
                     .task {
-                        withAnimation(.easeOut(duration: 0.7).repeatForever()) {
+                        withAnimation(.bouncy(duration: 0.7).repeatForever()) {
                             isAnimating = true
                             }
                         }
@@ -88,6 +93,8 @@ struct KitchenView: View {
                 }
                 
                 HStack {
+                    
+                    //fuba
                     Button(action: {
                         sheetFuba.toggle()
                     }, label: {
@@ -108,12 +115,13 @@ struct KitchenView: View {
                         }
                     })
                     .task {
-                        withAnimation(.easeOut(duration: 0.6).repeatForever()) {
+                        withAnimation(.bouncy(duration: 0.6).repeatForever()) {
                             isAnimating = true
                             }
                         }
                     .scaleEffect(isAnimating ? 1.0 : 0.98)
                     
+                    //retrato
                     Button(action: {
                         sheetRetrato.toggle()
                     }, label: {
@@ -122,7 +130,7 @@ struct KitchenView: View {
                             .blur(radius: abriuRetrato ? 3.0 : 0.0)
                     })
                     .frame(width: 140, height: 50)
-                    .offset(CGSize(width: 350, height: -10))
+                    .offset(CGSize(width: 400, height: -10))
                     .sheet(isPresented: $sheetRetrato, content: {
                         
                         Text("retrato")
@@ -134,7 +142,7 @@ struct KitchenView: View {
                         }
                     })
                     .task {
-                        withAnimation(.easeOut(duration: 0.75).repeatForever()) {
+                        withAnimation(.bouncy(duration: 0.75).repeatForever()) {
                             isAnimating = true
                             }
                         }

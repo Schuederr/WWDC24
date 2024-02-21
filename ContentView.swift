@@ -75,6 +75,7 @@ struct ContentView: View {
             .frame(maxWidth: .infinity)
             .frame(maxHeight: .infinity)
             .background(Color("amarelo"))
-        }
+            .navigationBarBackButtonHidden()
     }
+}
 

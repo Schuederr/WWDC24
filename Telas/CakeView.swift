@@ -115,7 +115,7 @@ struct CakeView: View {
                         case .powder:
                             if ingredient.moment == "powder" {
                                 Image(collisions[index] ? "colher" : ingredient.title)
-                                    .scaleEffect(0.5)
+                                    .scaleEffect(0.7)
                                     .offset(x: xOffset,
                                             y: yOffset)
                                     .frame(width: 50, height: 50)
@@ -192,8 +192,8 @@ struct CakeView: View {
     private func checkCollision(index: Int) {
         let ingredientFrame = frames[index].offsetBy(dx: dragOffsets[index].width, dy: dragOffsets[index].height)
         
-        print("blender frame: \(blenderFrame)")
-        print("ingredientFrame: \(ingredientFrame)")
+//        print("blender frame: \(blenderFrame)")
+//        print("ingredientFrame: \(ingredientFrame)")
         
         if ingredientFrame.intersects(blenderFrame) {
             collisions[index] = true
