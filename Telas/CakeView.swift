@@ -21,9 +21,13 @@ struct CakeView: View {
     @State var blenderWorking2 = false
     @State var blenderDone = false
     
-    @State var speech = true
+    @State var liquidSpeech = true
+    @State var solidSpeech = false
+    @State var powderSpeech = false
+    @State var blenderSpeech = false
+    @State var finalSpeech = false
     
-    let gridItems = [GridItem(), GridItem()]
+    let gridItems = [GridItem(), GridItem(), GridItem()]
     
     var body: some View {
         ZStack {
@@ -34,13 +38,13 @@ struct CakeView: View {
                 .ignoresSafeArea()
             
             HStack {
-                LazyVGrid(columns: gridItems) {
+                LazyVGrid(columns: gridItems, spacing: 10) {
                     ForEach(Array(ingredients.enumerated()), id: \.offset) { index, ingredient in
                         let xOffset = dragOffsets[index].width
                         let yOffset = dragOffsets[index].height
                         
                         switch moment {
-
+                            
                             
                         case .liquids:
                             if ingredient.moment == "liquid" && ingredient.isEgg == false {
@@ -50,7 +54,7 @@ struct CakeView: View {
                                     .offset(x: xOffset,
                                             y: yOffset)
                                     .frame(width: 50, height: 50)
-                                    .padding()
+                                    .padding(10)
                                     .gesture(DragGesture()
                                         .onChanged { value in
                                             dragOffsets[index] = value.translation
@@ -60,6 +64,7 @@ struct CakeView: View {
                                                 liquidsInBlender += 1
                                                 if liquidsInBlender == 5 {
                                                     moment = .solids
+                                                    solidSpeech = true
                                                 }
                                             }
                                         }
@@ -75,7 +80,7 @@ struct CakeView: View {
                                     .offset(x: xOffset,
                                             y: yOffset)
                                     .frame(width: 50, height: 50)
-                                    .padding()
+                                    .padding(10)
                                     .gesture(DragGesture()
                                         .onChanged { value in
                                             dragOffsets[index] = value.translation
@@ -85,6 +90,7 @@ struct CakeView: View {
                                                 liquidsInBlender += 1
                                                 if liquidsInBlender == 5 {
                                                     moment = .solids
+                                                    solidSpeech = true
                                                 }
                                             }
                                         }
@@ -101,7 +107,7 @@ struct CakeView: View {
                                     .offset(x: xOffset,
                                             y: yOffset)
                                     .frame(width: 50, height: 50)
-                                    .padding()
+                                    .padding(10)
                                     .gesture(DragGesture()
                                         .onChanged { value in
                                             dragOffsets[index] = value.translation
@@ -111,6 +117,7 @@ struct CakeView: View {
                                                 solidsInBlender += 1
                                                 if solidsInBlender == 3 {
                                                     moment = .powder
+                                                    powderSpeech = true
                                                 }
                                             }
                                         }
@@ -128,7 +135,7 @@ struct CakeView: View {
                                         .offset(x: xOffset,
                                                 y: yOffset)
                                         .frame(width: 50, height: 50)
-                                        .padding()
+                                        .padding(10)
                                         .gesture(DragGesture()
                                             .onChanged { value in
                                                 dragOffsets[index] = value.translation
@@ -137,6 +144,7 @@ struct CakeView: View {
                                                     resetOffsets(index: index)
                                                     blend = true
                                                     blenderFull = true
+                                                    blenderSpeech = true
                                                 }
                                             }
                                         )
@@ -147,6 +155,10 @@ struct CakeView: View {
                         }
                     }
                 }
+                .offset(CGSize(width: -70, height: 70))
+                .rotationEffect(Angle(degrees: -5))
+                .frame(width: 350, height: 00)
+                .padding(.trailing, 100)
                 
                 
                 // blender conditions
@@ -180,7 +192,7 @@ struct CakeView: View {
                             blenderDone = true
                         }
                     }
-
+                    
                 } else if moment == .solids {
                     ZStack(alignment: .trailing) {
                         Image("liquidMetadeMaquina")
@@ -219,23 +231,102 @@ struct CakeView: View {
                     }
                 })
             
+            
+            // Speech conditions
+            ZStack {
+                if liquidSpeech == true || solidSpeech == true || powderSpeech == true || blenderSpeech == true {
+                    Rectangle()
+                        .foregroundStyle(.black.opacity(0.4))
+                        .ignoresSafeArea()
+                    
+                    ZStack {
+                        Image("fala")
+                            .resizable()
+                            .scaledToFit()
+                            .scaleEffect(0.7)
+                            .ignoresSafeArea()
+                        
+                        if liquidSpeech {
+                            Text("bota os liquido.")
+                                .font(.custom("Arvo", size: 23))
+                                .multilineTextAlignment(.leading)
+                                .foregroundStyle(Color("marrom"))
+                                .frame(width: 650, height: 250, alignment: .topLeading)
+                                .offset(CGSize(width: 40, height: 8))
+                                .rotationEffect(Angle(degrees: -2))
+                            //                                                                                .background()
+                        }
+                        if solidSpeech {
+                            Text("bota os solido.")
+                                .font(.custom("Arvo", size: 23))
+                                .multilineTextAlignment(.leading)
+                                .foregroundStyle(Color("marrom"))
+                                .frame(width: 650, height: 250, alignment: .topLeading)
+                                .offset(CGSize(width: 40, height: 8))
+                                .rotationEffect(Angle(degrees: -2))
+                            //                                                                                .background()
+                        }
+                        if powderSpeech {
+                            Text("bota o fermento.")
+                                .font(.custom("Arvo", size: 23))
+                                .multilineTextAlignment(.leading)
+                                .foregroundStyle(Color("marrom"))
+                                .frame(width: 650, height: 250, alignment: .topLeading)
+                                .offset(CGSize(width: 40, height: 8))
+                                .rotationEffect(Angle(degrees: -2))
+                            //                                                                                .background()
+                        }
+                        if blenderSpeech {
+                            Text("liga o liquidificador.")
+                                .font(.custom("Arvo", size: 23))
+                                .multilineTextAlignment(.leading)
+                                .foregroundStyle(Color("marrom"))
+                                .frame(width: 650, height: 250, alignment: .topLeading)
+                                .offset(CGSize(width: 40, height: 8))
+                                .rotationEffect(Angle(degrees: -2))
+                            //                                                                                .background()
+                        }
+                        
+                    }
+                    .offset(CGSize(width: -150, height: -240))
+                    
+                    Text("Tap the screen")
+                        .frame(width: 200, height: 50)
+                        .font(.custom("Arvo", size: 20))
+                        .foregroundStyle(Color("marrom"))
+                        .background(Color("amarelinho"))
+                        .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
+                        .offset(CGSize(width: 100, height: 120))
+                        .opacity(0.8)
+                    
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .onTapGesture {
+                liquidSpeech = false
+                solidSpeech = false
+                powderSpeech = false
+                blenderSpeech = false
+            }
+            
             // NavigationLink
             VStack(alignment: .trailing) {
                 if blenderDone == true {
-                    NavigationLink {
-                        PourCakeView()
-                    } label: {
-                        Image(systemName: "chevron.right")
-                            .foregroundStyle(Color("marrom"))
-                            .bold()
-                            .font(.title)
-                            .frame(width: 75, height: 75)
-                            .background(Color("begezinho"))
-                    }
-                    .padding(50)
-                    .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
-                    .frame(maxWidth: .infinity, alignment: .bottomTrailing)
-                    .offset(CGSize(width: 0, height: 350))
+                        NavigationLink {
+                            PourCakeView()
+                        } label: {
+                            Image(systemName: "chevron.right")
+                                .foregroundStyle(Color("marrom"))
+                                .bold()
+                                .font(.title)
+                                .frame(width: 75, height: 75)
+                                .background(Color("begezinho"))
+                        }
+                        .padding(50)
+                        .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
+                        .frame(maxWidth: .infinity, alignment: .bottomTrailing)
+                        .offset(CGSize(width: 0, height: 320))
+                    
                 }
             }
             

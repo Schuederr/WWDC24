@@ -12,6 +12,7 @@ struct WaitingView: View {
     @State var isAnimating: Bool = false
     @State var isCooked = false
     
+    
     var body: some View {
         ZStack {
             Image("cozinha")
@@ -43,7 +44,7 @@ struct WaitingView: View {
             }.frame(maxWidth: .infinity)
             
             Rectangle()
-                .foregroundStyle(.white.opacity(0.25))
+                .foregroundStyle(.black.opacity(0.4))
                 .ignoresSafeArea()
             
             HStack {
@@ -51,13 +52,8 @@ struct WaitingView: View {
                     .resizable()
                     .scaledToFit()
                     .ignoresSafeArea()
-                    .offset(CGSize(width: 170, height: 110))
-                    .task {
-                        withAnimation(.bouncy(duration: 0.65).repeatForever()) {
-                            isAnimating = true
-                        }
-                    }
-                    .scaleEffect(isAnimating ? 1.0 : 0.98)
+                    .offset(CGSize(width: 170, height: 200))
+                    .wiggle(true, angle: .degrees(30), 0.3)
                 
                 ZStack {
                     Image("fala")
@@ -68,6 +64,7 @@ struct WaitingView: View {
                     VStack {
                         Text("ta no forno pera ai")
                             .foregroundStyle(Color("marrom"))
+                            .font(.custom("Arvo", size: 20))
                             .multilineTextAlignment(.leading)
                     }
                     .frame(width: 500, height: 200)

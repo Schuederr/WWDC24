@@ -6,14 +6,14 @@ struct PourCakeView: View {
     @StateObject var viewModel = PourCakeViewModel()
     
     @State private var jaClicou = false
-
+    
     var body: some View {
         ZStack {
             Image("tableCake")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .ignoresSafeArea()
-           
+            
             HStack {
                 
                 // pan conditions
@@ -67,7 +67,7 @@ struct PourCakeView: View {
                 
                 ZStack {
                     Rectangle()
-                        .foregroundStyle(.white.opacity(0.25))
+                        .foregroundStyle(.black.opacity(0.4))
                         .ignoresSafeArea()
                     ZStack {
                         Image("fala")
@@ -75,15 +75,22 @@ struct PourCakeView: View {
                             .scaledToFit()
                             .scaleEffect(0.6)
                             .ignoresSafeArea()
-                        VStack {
-                            Text("blablablabla nao defini ainda mas vai fala pra virar o ipad")
-                                .multilineTextAlignment(.leading)
-                                .foregroundStyle(Color("marrom"))
-                        }
-                        .frame(width: 650, height: 250)
-                        .offset(CGSize(width: 25, height: 0))
+                        Text("blablablabla nao defini ainda mas vai fala pra virar o ipad")
+                            .font(.custom("Arvo", size: 20))
+                            .multilineTextAlignment(.leading)
+                            .foregroundStyle(Color("marrom"))
+                            .frame(width: 650, height: 250)
+                            .offset(CGSize(width: 25, height: 0))
                     }.offset(CGSize(width: -225, height: -270))
                         .padding(.bottom)
+                    Text("Tap the screen")
+                        .frame(width: 200, height: 50)
+                        .opacity(0.8)
+                        .font(.custom("Arvo", size: 20))
+                        .foregroundStyle(Color("marrom"))
+                        .background(Color("amarelinho"))
+                        .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
+                        .offset(CGSize(width: 100, height: 80))
                 }.onTapGesture {
                     jaClicou = true
                     viewModel.isRotating = true
@@ -94,7 +101,7 @@ struct PourCakeView: View {
                 
                 ZStack {
                     Rectangle()
-                        .foregroundStyle(.white.opacity(0.25))
+                        .foregroundStyle(.black.opacity(0.4))
                         .ignoresSafeArea()
                     
                     ZStack {
@@ -103,10 +110,11 @@ struct PourCakeView: View {
                             .scaledToFit()
                             .scaleEffect(0.6)
                             .ignoresSafeArea()
-                        Text("blablablabla nao defini ainda mas vai fala pra virar o ipad")
+                        Text("acabou")
                             .multilineTextAlignment(.leading)
                             .frame(width: 650, height: 250)
                             .offset(CGSize(width: 25, height: 0))
+                            .font(.custom("Arvo", size: 20))
                     }.offset(CGSize(width: -225, height: -270))
                         .padding(.bottom)
                     
