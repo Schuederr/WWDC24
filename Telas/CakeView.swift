@@ -1,8 +1,8 @@
 import SwiftUI
 
-// this view is pure genius - and stress
-
 struct CakeView: View {
+    
+    // this view is pure genius - and stress
     
     @State var ingredients = Ingredient.populateIngredients()
     @State var moment = Moment.liquids
@@ -21,10 +21,13 @@ struct CakeView: View {
     @State var blenderWorking2 = false
     @State var blenderDone = false
     
+    @State var speech = true
+    
     let gridItems = [GridItem(), GridItem()]
     
     var body: some View {
         ZStack {
+            
             Image("tableCake")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
@@ -37,6 +40,7 @@ struct CakeView: View {
                         let yOffset = dragOffsets[index].height
                         
                         switch moment {
+
                             
                         case .liquids:
                             if ingredient.moment == "liquid" && ingredient.isEgg == false {
@@ -145,6 +149,7 @@ struct CakeView: View {
                 }
                 
                 
+                // blender conditions
                 if blend == true {
                     ZStack {
                         if blenderFull {
@@ -175,7 +180,7 @@ struct CakeView: View {
                             blenderDone = true
                         }
                     }
-                    
+
                 } else if moment == .solids {
                     ZStack(alignment: .trailing) {
                         Image("liquidMetadeMaquina")
@@ -239,7 +244,6 @@ struct CakeView: View {
     
     
     // functions and enum
-    
     private func resetOffsets(index: Int) {
         dragOffsets[index].width = 0
         dragOffsets[index].height = 0
@@ -248,10 +252,6 @@ struct CakeView: View {
     
     private func checkCollision(index: Int) {
         let ingredientFrame = frames[index].offsetBy(dx: dragOffsets[index].width, dy: dragOffsets[index].height)
-        
-        //        print("blender frame: \(blenderFrame)")
-        //        print("ingredientFrame: \(ingredientFrame)")
-        
         if ingredientFrame.intersects(blenderFrame) {
             collisions[index] = true
         } else {

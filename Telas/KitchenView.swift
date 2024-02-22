@@ -188,25 +188,28 @@ struct KitchenView: View {
                             Image("fala")
                                 .resizable()
                                 .scaledToFit()
-                                .scaleEffect(0.7)
+                                .scaleEffect(0.9)
                                 .ignoresSafeArea()
                             VStack {
-                                Text("blablablabla nao defini ainda mas toca na tela pra pode mexe na cozinha")
+                                Text("Hi, sweetie!\nI'm so happy you're here to bake a ''bolo de fubá'' with me.\n\nYou know ''bolo'' is portuguese for ''cake'', right?\n\nYou'll find out what ''fubá' means if you explore my kitchen while I grab the ingredients for our cake.")
+                                    .font(.custom("Arvo", size: 23))
                                     .multilineTextAlignment(.leading)
                                     .foregroundStyle(Color("marrom"))
                             }
-                            .frame(width: 500, height: 200)
-                            //                            .background()
-                            .offset(CGSize(width: 25, height: 0))
+                            .frame(width: 650, height: 220, alignment: .topLeading)
+//                                                        .background()
+                            .offset(CGSize(width: 35, height: 10))
+                            .rotationEffect(Angle(degrees: -1))
                         }.offset(CGSize(width: 10.0, height: -250))
                     }
                     
                     Text("Tap the screen")
                         .frame(width: 200, height: 50)
-                        .font(.title)
+                        .font(.custom("Arvo", size: 20))
                         .foregroundStyle(Color("marrom"))
                         .background(Color("amarelinho"))
                         .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
+                        .offset(CGSize(width: 100, height: 80))
                     
                 }.onTapGesture {
                     vovo = false

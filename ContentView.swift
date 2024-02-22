@@ -62,7 +62,7 @@ struct ContentView: View {
                     } label: {
                             VStack {
                                 Text("START")
-                                    .font(.custom("VastShadow", size: 36))
+                                    .font(.custom("VastShadow-Regular", size: 36))
                                     .foregroundStyle(Color("marrom"))
                             }
                             .frame(width: 250, height: 75)
