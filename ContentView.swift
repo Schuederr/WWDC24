@@ -1,8 +1,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var audioManager = AudioManager()
+    @State var isPlaying = true
+    
     var body: some View {
-            
             ZStack {
                 //images
                 VStack{
@@ -28,16 +31,32 @@ struct ContentView: View {
                 VStack {
                     HStack {
                         Spacer()
-                        Button(action: {
-                            ///fazer parar musica aqui
-                        }, label: {
-                            Image(systemName: "speaker.slash")
-                                .font(.largeTitle)
-                                .bold()
-                                .foregroundStyle(Color("marrom"))
-                                .padding(.trailing, 40)
-                                .padding(.top, 24)
-                        })
+                        if isPlaying == true {
+                            Button(action: {
+                                audioManager.stopAll()
+                                isPlaying = false
+                            }, label: {
+                                Image(systemName: "speaker.slash")
+                                    .font(.largeTitle)
+                                    .bold()
+                                    .foregroundStyle(Color("marrom"))
+                                    .padding(.trailing, 40)
+                                    .padding(.top, 24)
+                            })
+                        }
+                        if isPlaying == false {
+                            Button(action: {
+                                audioManager.playAudio(for: "Move Like That")
+                                isPlaying = true
+                            }, label: {
+                                Image(systemName: "speaker")
+                                    .font(.largeTitle)
+                                    .bold()
+                                    .foregroundStyle(Color("marrom"))
+                                    .padding(.trailing, 40)
+                                    .padding(.top, 24)
+                            })
+                        }
                     }
                     HStack(alignment: .center) {
                         Image(systemName: "ipad.landscape")
@@ -76,6 +95,9 @@ struct ContentView: View {
             .frame(maxHeight: .infinity)
             .background(Color("amarelo"))
             .navigationBarBackButtonHidden()
+            .onAppear {
+//                audioManager.playAudio(for: "Move Like That")
+            }
     }
 }
 
