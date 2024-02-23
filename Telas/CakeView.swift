@@ -27,6 +27,8 @@ struct CakeView: View {
     @State var blenderSpeech = false
     @State var finalSpeech = false
     
+    @ObservedObject var audioManager = AudioManager()
+    
     let gridItems = [GridItem(), GridItem(), GridItem()]
     
     var body: some View {
@@ -183,11 +185,12 @@ struct CakeView: View {
                     .onTapGesture {
                         blenderFull = false
                         blenderWorking = true
+                        audioManager.playAudio(for: "blender")
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                             blenderWorking = false
                             blenderWorking2 = true
                         }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 4.5) {
                             blenderWorking2 = false
                             blenderDone = true
                         }

@@ -11,14 +11,20 @@ import AVFoundation
 class AudioManager: ObservableObject {
     var players: [AVAudioPlayer] = []
 
-    func playAudio(for songName: String) {
+    func playAudio(for songName: String, loop: Bool = false) {
         if let path = Bundle.main.path(forResource: songName, ofType: "mp3") {
             let url = URL(fileURLWithPath: path)
 
             do {
                 let player = try AVAudioPlayer(contentsOf: url)
                 players.append(player)
+                
+                if loop {
+                    player.numberOfLoops = -1
+                }
+                
                 player.play()
+                
             } catch {
                 print("Erro ao carregar o arquivo de áudio.")
             }

@@ -10,7 +10,9 @@ import SwiftUI
 struct MsgView: View {
     @State private var isShowingSheet = false
     
-    @State private var mensagem = Mensagem.hi
+    @State private var mensagem = Mensagem.empty
+    
+    @ObservedObject var audioManager = AudioManager()
     
     /// fazer animação da aparição das imagens
     
@@ -21,36 +23,56 @@ struct MsgView: View {
                 .aspectRatio(contentMode: .fit)
             
             ZStack {
+                
                 Image("celular")
                     .scaleEffect(0.55)
-                Image("msg1")
-                    .scaleEffect(0.5)
-                    .offset(CGSize(width: 0, height: -175))
-                if mensagem != .hi {
+                
+                if mensagem != .empty {
+                    Image("msg1")
+                        .scaleEffect(0.5)
+                        .offset(CGSize(width: 0, height: -175))
+                        .onAppear {
+                            audioManager.playAudio(for: "sent")
+                        }
+                }
+                if mensagem != .hi && mensagem != .empty {
                     Image("msg2")
                         .scaleEffect(0.5)
                         .offset(CGSize(width: -60, height: -118))
+                        .onAppear {
+                            audioManager.playAudio(for: "received")
+                        }
                 }
-                if mensagem != .hi && mensagem != .hi2 {
+                if mensagem != .hi && mensagem != .hi2 && mensagem != .empty {
                     Image("msg3")
                         .scaleEffect(0.5)
                         .offset(CGSize(width: -25, height: -65))
+                        .onAppear {
+                            audioManager.playAudio(for: "received")
+                        }
                 }
                 if mensagem == .seeYa {
                     Image("msg4")
                         .scaleEffect(0.5)
                         .offset(CGSize(width: 00, height: -7))
+                        .onAppear {
+                            audioManager.playAudio(for: "sent")
+                        }
                 }
             
             }
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    mensagem = Mensagem.hi
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
                     mensagem = Mensagem.hi2
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 4.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5.5) {
                     mensagem = Mensagem.bolo
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
                     mensagem = Mensagem.seeYa
                 }
             }
@@ -84,6 +106,7 @@ struct MsgView: View {
     }
 
     enum Mensagem {
+        case empty
         case hi
         case hi2
         case bolo

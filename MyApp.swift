@@ -4,14 +4,13 @@ import SwiftUI
 struct MyApp: App {
     
     init() {
-            try! UIFont.registerFonts(withExtension: "ttf") // Para fontes com formato ttf
-            try! UIFont.registerFonts(withExtension: "otf") // Para fontes com formato otf
+            try! UIFont.registerFonts(withExtension: "ttf")
         }
     
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ContentView()
+                CakeView()
             }
         }
     }
