@@ -25,7 +25,6 @@ struct CakeView: View {
     @State var solidSpeech = false
     @State var powderSpeech = false
     @State var blenderSpeech = false
-    @State var finalSpeech = false
     
     @ObservedObject var audioManager = AudioManager()
     
@@ -250,44 +249,36 @@ struct CakeView: View {
                             .ignoresSafeArea()
                         
                         if liquidSpeech {
-                            Text("bota os liquido.")
-                                .font(.custom("Arvo", size: 23))
+                            Text("Fubá cake is very simple to bake.\nAll the ingredients go straight into the blender.\n\nFirst, we should add all the liquids, so it’s easier to blend.\n\n**Drag them to the blender.**")
+                                .font(.custom("Arvo", size: 24))
                                 .multilineTextAlignment(.leading)
                                 .foregroundStyle(Color("marrom"))
-                                .frame(width: 650, height: 250, alignment: .topLeading)
-                                .offset(CGSize(width: 40, height: 8))
+                                .frame(width: 550, height: 220, alignment: .topLeading)
                                 .rotationEffect(Angle(degrees: -2))
-                            //                                                                                .background()
                         }
                         if solidSpeech {
-                            Text("bota os solido.")
-                                .font(.custom("Arvo", size: 23))
+                            Text("Once all the liquids are in the blender, it’s time to add the flours.\n\n**Drag them to the blender.**")
+                                .font(.custom("Arvo", size: 24))
                                 .multilineTextAlignment(.leading)
                                 .foregroundStyle(Color("marrom"))
-                                .frame(width: 650, height: 250, alignment: .topLeading)
-                                .offset(CGSize(width: 40, height: 8))
+                                .frame(width: 550, height: 150, alignment: .topLeading)
                                 .rotationEffect(Angle(degrees: -2))
-                            //                                                                                .background()
                         }
                         if powderSpeech {
-                            Text("bota o fermento.")
-                                .font(.custom("Arvo", size: 23))
+                            Text("Lastly, we add the baking powder, of course.\n\n**Drag it to the blender.**")
+                                .font(.custom("Arvo", size: 24))
                                 .multilineTextAlignment(.leading)
                                 .foregroundStyle(Color("marrom"))
-                                .frame(width: 650, height: 250, alignment: .topLeading)
-                                .offset(CGSize(width: 40, height: 8))
+                                .frame(width: 520, height: 150, alignment: .topLeading)
                                 .rotationEffect(Angle(degrees: -2))
-                            //                                                                                .background()
                         }
                         if blenderSpeech {
-                            Text("liga o liquidificador.")
-                                .font(.custom("Arvo", size: 23))
+                            Text("That’s it!\n\nNow we just blend it all together.\n\nA simple **tap on the blender** should turn it on")
+                                .font(.custom("Arvo", size: 24))
                                 .multilineTextAlignment(.leading)
                                 .foregroundStyle(Color("marrom"))
-                                .frame(width: 650, height: 250, alignment: .topLeading)
-                                .offset(CGSize(width: 40, height: 8))
+                                .frame(width: 550, height: 175, alignment: .topLeading)
                                 .rotationEffect(Angle(degrees: -2))
-                            //                                                                                .background()
                         }
                         
                     }
@@ -299,7 +290,7 @@ struct CakeView: View {
                         .foregroundStyle(Color("marrom"))
                         .background(Color("amarelinho"))
                         .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
-                        .offset(CGSize(width: 100, height: 120))
+                        .offset(CGSize(width: 00, height: 120))
                         .opacity(0.8)
                     
                 }
