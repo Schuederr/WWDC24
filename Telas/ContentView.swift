@@ -29,9 +29,11 @@ struct ContentView: View {
                 VStack {
                     HStack {
                         HStack {
-                            Image(systemName: "ipad.landscape")
+                            Image(systemName: "rectangle.landscape.rotate")
                                 .symbolRenderingMode(.monochrome)
                                 .foregroundStyle(Color("marrom"))
+                                .font(.title3)
+                                .fontWeight(.bold)
                                 .padding(.trailing, 2)
                             Text("Please use landscape orientation")
                                 .foregroundStyle(Color("marrom"))
@@ -70,7 +72,7 @@ struct ContentView: View {
             .navigationBarBackButtonHidden()
             .onAppear {
                 audioManager.stopAll()
-                audioManager.playAudio(for: "Move Like That", loop: true)
+//                audioManager.playAudio(for: "Move Like That", loop: true)
             }
     }
 }

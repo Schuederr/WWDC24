@@ -34,7 +34,6 @@ struct KitchenView: View {
             
             //buttons
             VStack {
-                
                 //folhinha e barco
                 HStack {
                     Button(action: {
@@ -48,25 +47,54 @@ struct KitchenView: View {
                     .offset(CGSize(width: -150, height: -150))
                     .sheet(isPresented: $sheetFolhinha, onDismiss: { abriuFolhinha = true }, content: {
                         
-                        ZStack {
-                            Button(action: {
-                                sheetFolhinha.toggle()
-                            }, label: {
-                                Image(systemName: "xmark")
-                                    .font(.title3)
-                                    .fontWeight(.bold)
+                        VStack {
+                            HStack {
+                                Button(action: {
+                                    sheetFolhinha.toggle()
+                                }, label: {
+                                    Image(systemName: "xmark")
+                                        .font(.title3)
+                                        .fontWeight(.bold)
                             })
-                            .offset(x: -320, y: -340)
+                                .padding(.top)
+                                .padding(.leading)
+                                
+                                Spacer()
+                            }
                             
-                            Text("FOLHINHA")
-                                .font(.custom("VastShadow-Regular", size: 24))
+                            
+                            Text("HEALTH BENEFITS OF FUBÁ")
+                                .font(.custom("VastShadow-Regular", size: 32))
                                 .foregroundStyle(Color("marrom"))
                                 .padding()
-                                .offset(y: -325)
                             
-                            ScrollView{
-                                
-                            }.offset(y: 75)
+                            ScrollView {
+                                VStack {
+                                    
+                                    Image("health")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .padding(.vertical)
+                                        .padding(.horizontal, 32)
+                                        .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
+                                    
+                                    Text("""
+In addition to being **a great source of energy**, fubá brings significant health benefits.
+
+It is rich in niacin (vitamin B3), zinc, and iron, and also provides potassium, phosphorus, and magnesium.
+
+Fubá is known for providing fiber, which is great for your gut health. It also can **reduce the risk** of *obesity, heart diseases, and diabetes.*
+
+Good news for those with celiac disease: **fubá does not contain gluten!**
+
+The food is also recommended for pregnant women as it is a source of folic acid, essential for the proper formation of the baby.
+""")
+                                        .font(.custom("Arvo", size: 20))
+                                        .foregroundStyle(Color("marrom"))
+                                        .padding(.horizontal, 32)
+                                        .padding(.top, 16)
+                                }.padding(.bottom, 20)
+                            }
                         }
                         .frame(maxWidth: .infinity)
                         .frame(maxHeight: .infinity)
@@ -92,25 +120,44 @@ struct KitchenView: View {
                     .offset(CGSize(width: 250, height: -100))
                     .sheet(isPresented: $sheetBarco, onDismiss: { abriuBarco = true }, content: {
                         
-                        ZStack {
-                            Button(action: {
-                                sheetBarco.toggle()
-                            }, label: {
-                                Image(systemName: "xmark")
-                                    .font(.title3)
-                                    .fontWeight(.bold)
-                            })
-                            .offset(x: -320, y: -340)
+                        VStack {
+                            HStack {
+                                Button(action: {
+                                    sheetBarco.toggle()
+                                }, label: {
+                                    Image(systemName: "xmark")
+                                        .font(.title3)
+                                        .fontWeight(.bold)
+                                })
+                                .padding(.top)
+                                .padding(.leading)
+                                Spacer()
+                            }
                             
-                            Text("BARCO")
-                                .font(.custom("VastShadow-Regular", size: 24))
+                            Text("FUBÁ HISTORY")
+                                .font(.custom("VastShadow-Regular", size: 30))
                                 .foregroundStyle(Color("marrom"))
                                 .padding()
-                                .offset(y: -325)
                             
                             ScrollView{
                                 
-                            }.offset(y: 75)
+                                Image("barco")
+                                    .scaleEffect(0.8)
+                                
+                                Text("""
+The history of fubá dates back to the colonial past of Latin American countries.
+
+Indigenous peoples revered this food as something sacred before the arrival of the Spanish and Portuguese on the continent.
+
+As colonization progressed and economic shifts occurred, it became a traditional food in the region, considered a staple in the economy.
+
+In the context of Brazilian history, Portuguese colonizers heavily relied on fubá for the preparation of various dishes, which persist in popularity throughout the country to this day.
+""")
+                                    .font(.custom("Arvo", size: 20))
+                                    .foregroundStyle(Color("marrom"))
+                                    .padding(.horizontal, 32)
+                                    .padding(.top, 16)
+                            }.padding(.bottom, 20)
                         }
                         .frame(maxWidth: .infinity)
                         .frame(maxHeight: .infinity)
@@ -139,25 +186,47 @@ struct KitchenView: View {
                     .offset(CGSize(width: -20, height: -60))
                     .sheet(isPresented: $sheetFuba, onDismiss: { abriuFuba = true }, content: {
                         
-                        ZStack {
-                            Button(action: {
-                                sheetFuba.toggle()
-                            }, label: {
-                                Image(systemName: "xmark")
-                                    .font(.title3)
-                                    .fontWeight(.bold)
-                            })
-                            .offset(x: -320, y: -340)
+                        VStack {
+                            HStack {
+                                Button(action: {
+                                    sheetFuba.toggle()
+                                }, label: {
+                                    Image(systemName: "xmark")
+                                        .font(.title3)
+                                        .fontWeight(.bold)
+                                })
+                                .padding(.top)
+                                .padding(.horizontal)
+                                Spacer()
+                            }
                             
-                            Text("FUBÁ")
-                                .font(.custom("VastShadow-Regular", size: 24))
+                            Text("WHAT IS FUBÁ")
+                                .font(.custom("VastShadow-Regular", size: 30))
                                 .foregroundStyle(Color("marrom"))
                                 .padding()
-                                .offset(y: -325)
                             
                             ScrollView{
+                                Image("milhoPilha")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.horizontal, 32)
+                                    .padding(.vertical)
+                                    .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
                                 
-                            }.offset(y: 75)
+                                Text("""
+Fubá (pronounced like *foo-bah*) is a word of African origin that means *flour*.
+
+In Brazilian lands, it refers to a type of cornmeal deeply rooted in Brazilian cuisine.
+
+This product results from the grinding of degerminated corn, resulting in a finer-flaked flour that absorbs more water than regular cornmeal.
+
+There are three distinct varieties of fubá, each differing in thickness and culinary applications: the traditional fubá, fubá mimoso and semolina.
+""")
+                                    .font(.custom("Arvo", size: 20))
+                                    .foregroundStyle(Color("marrom"))
+                                    .padding(.horizontal, 32)
+                                    .padding(.top, 16)
+                            }.padding(.bottom, 20)
                         }
                         .frame(maxWidth: .infinity)
                         .frame(maxHeight: .infinity)
@@ -184,25 +253,48 @@ struct KitchenView: View {
                     .offset(CGSize(width: 400, height: -10))
                     .sheet(isPresented: $sheetRetrato, onDismiss: { abriuRetrato = true }, content: {
                         
-                        ZStack {
-                            Button(action: {
-                                sheetRetrato.toggle()
-                            }, label: {
-                                Image(systemName: "xmark")
-                                    .font(.title3)
-                                    .fontWeight(.bold)
-                            })
-                            .offset(x: -320, y: -340)
+                        VStack {
+                            HStack {
+                                Button(action: {
+                                    sheetRetrato.toggle()
+                                }, label: {
+                                    Image(systemName: "xmark")
+                                        .font(.title3)
+                                        .fontWeight(.bold)
+                                })
+                                .padding(.top)
+                                .padding(.leading)
+                                Spacer()
+                            }
                             
-                            Text("RETRATO")
+                            Text("FUBÁ AND BRAZILIAN CULTURE")
                                 .font(.custom("VastShadow-Regular", size: 24))
                                 .foregroundStyle(Color("marrom"))
                                 .padding()
-                                .offset(y: -325)
                             
                             ScrollView{
+                                Image("culture")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.horizontal, 32)
+                                    .padding(.vertical)
+                                    .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
                                 
-                            }.offset(y: 75)
+                                Text("""
+Fubá plays a fundamental role in crafting a wide variety of dishes, such as cakes, bread, puddings, *angu* and *polenta*.
+
+It is worth noting that many of these recipes are **meant to be shared**. Fubá cake, in particular, has become a tradition during the popular Brazilian festivities known as "festas juninas," which take place annually in June.
+
+Food has the unique power to build bonds with cherished people and places, to evoke memories and to connect to the history of a nation.
+
+*Fubá carries within it flavors that transport us to a grandmother's home, to a specific time of the year, to festive celebrations, to historical echoes, and to **Brazil itself**.*
+""")
+                                .font(.custom("Arvo", size: 20))
+                                .foregroundStyle(Color("marrom"))
+                                .padding(.horizontal, 32)
+                                .padding(.top, 16)
+                                
+                            }.padding(.bottom, 20)
                         }
                         .frame(maxWidth: .infinity)
                         .frame(maxHeight: .infinity)
@@ -238,15 +330,15 @@ struct KitchenView: View {
                                 .scaledToFit()
                                 .scaleEffect(0.9)
                                 .ignoresSafeArea()
-                            VStack {
+                            
                                 Text("Hi, kid! I'm so happy you're here to bake a ''bolo de fubá'' with me.\n\n''Bolo'' is portuguese for ''cake'', you know.\n\n And ''fubá'', well... You'll find out what it means if you explore my kitchen while I grab the ingredients for our fubá cake.")
                                     .font(.custom("Arvo", size: 22))
                                     .multilineTextAlignment(.leading)
                                     .foregroundStyle(Color("marrom"))
-                            }
-                            .frame(width: 680, height: 245, alignment: .topLeading)
-                            .offset(CGSize(width: 40, height: 8))
-                            .rotationEffect(Angle(degrees: -2))
+                                    .frame(width: 680, height: 245, alignment: .topLeading)
+                                    .offset(CGSize(width: 40, height: 8))
+                                    .rotationEffect(Angle(degrees: -2))
+                            
                         }.offset(CGSize(width: 10.0, height: -250))
                     }
                     
@@ -286,7 +378,7 @@ struct KitchenView: View {
                                 .scaleEffect(0.9)
                                 .ignoresSafeArea()
                             VStack {
-                                Text("It's interesting how fubá is something so common in our daily lives in Brazil, but we usually don’t think about it.\n\nAnyway... The ingredients are waiting for us.\n\nLet’s start baking!")
+                                Text("It's interesting how fubá is something so common in our daily lives in Brazil, but we don't usually think about it.\n\nAnyway... The ingredients are waiting for us.\n\nLet’s start baking!")
                                     .font(.custom("Arvo", size: 22))
                                     .multilineTextAlignment(.leading)
                                     .foregroundStyle(Color("marrom"))

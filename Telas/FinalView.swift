@@ -10,7 +10,7 @@ import SwiftUI
 struct FinalView: View {
     
     @State private var sheetReceita = false
-    @State private var sheetCredits = true
+    @State private var sheetCredits = false
     
     let gridItems = [GridItem(), GridItem()]
     
@@ -232,6 +232,24 @@ struct FinalView: View {
                                     .padding(.vertical, 2)
                                 
                                 Text("Ornamental fonts from Draughtsman's Alphabets by Hermann Esser (1845–1908). https://www.rawpixel.com/image/378052/free-illustration-image-vintage-letters-font")
+                                    .font(.custom("Arvo", size: 14))
+                                    .foregroundStyle(Color("marrom"))
+                                    .padding(.horizontal)
+                                    .padding(.vertical, 2)
+                                
+                                Text("Picture from Kaylee Garrett at Unsplash: https://unsplash.com/pt-br/fotografias/cinco-mulheres-em-pe-no-litoral-GaprWyIw66o")
+                                    .font(.custom("Arvo", size: 14))
+                                    .foregroundStyle(Color("marrom"))
+                                    .padding(.horizontal)
+                                    .padding(.vertical, 2)
+
+                                Text("Picture from Jayson Roy at Unsplash: https://unsplash.com/pt-br/fotografias/pilha-de-milhos-R_QCTWEVctU")
+                                    .font(.custom("Arvo", size: 14))
+                                    .foregroundStyle(Color("marrom"))
+                                    .padding(.horizontal)
+                                    .padding(.vertical, 2)
+                                
+                                Text("Brasil com S | 0299 https://www.brasilcoms.com.br/?pgid=l9pw7t64-ea444f7b-0943-478d-8566-19976b480782")
                                     .font(.custom("Arvo", size: 14))
                                     .foregroundStyle(Color("marrom"))
                                     .padding(.horizontal)

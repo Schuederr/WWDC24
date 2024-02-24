@@ -80,7 +80,7 @@ struct PourCakeView: View {
                             .multilineTextAlignment(.leading)
                             .foregroundStyle(Color("marrom"))
                             .frame(width: 700, height: 350)
-                            .offset(CGSize(width: 40, height: -7))
+                            .offset(CGSize(width: 40, height: 0))
                             .rotationEffect(Angle(degrees: -2))
 
                     }
@@ -120,7 +120,8 @@ struct PourCakeView: View {
                             .frame(width: 700, height: 350)
                             .offset(CGSize(width: 40, height: 0))
                             .rotationEffect(Angle(degrees: -2))
-                    }.offset(x: -150, y: -230)
+                    }
+                    .offset(x: -150, y: -230)
                     
                     VStack(alignment: .trailing) {
                         NavigationLink {
@@ -141,7 +142,7 @@ struct PourCakeView: View {
                     .frame(maxHeight: .infinity)
                     .offset(CGSize(width: 0, height: 300))
                     
-                }
+                }.frame(maxWidth: .infinity).frame(maxHeight: .infinity)
             }
             
         }.background(Color("amarelinho"))

@@ -253,7 +253,7 @@ struct CakeView: View {
                                 .font(.custom("Arvo", size: 24))
                                 .multilineTextAlignment(.leading)
                                 .foregroundStyle(Color("marrom"))
-                                .frame(width: 550, height: 220, alignment: .topLeading)
+                                .frame(width: 550, height: 240, alignment: .topLeading)
                                 .rotationEffect(Angle(degrees: -2))
                         }
                         if solidSpeech {
@@ -277,7 +277,7 @@ struct CakeView: View {
                                 .font(.custom("Arvo", size: 24))
                                 .multilineTextAlignment(.leading)
                                 .foregroundStyle(Color("marrom"))
-                                .frame(width: 550, height: 175, alignment: .topLeading)
+                                .frame(width: 550, height: 200, alignment: .topLeading)
                                 .rotationEffect(Angle(degrees: -2))
                         }
                         
