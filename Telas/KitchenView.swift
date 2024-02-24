@@ -48,13 +48,25 @@ struct KitchenView: View {
                     .offset(CGSize(width: -150, height: -150))
                     .sheet(isPresented: $sheetFolhinha, onDismiss: { abriuFolhinha = true }, content: {
                         
-                        VStack {
-                            Text("folhinha")
-                            Button {
+                        ZStack {
+                            Button(action: {
                                 sheetFolhinha.toggle()
-                            } label: {
-                                Text("Fecha")
-                            }
+                            }, label: {
+                                Image(systemName: "xmark")
+                                    .font(.title3)
+                                    .fontWeight(.bold)
+                            })
+                            .offset(x: -320, y: -340)
+                            
+                            Text("FOLHINHA")
+                                .font(.custom("VastShadow-Regular", size: 24))
+                                .foregroundStyle(Color("marrom"))
+                                .padding()
+                                .offset(y: -325)
+                            
+                            ScrollView{
+                                
+                            }.offset(y: 75)
                         }
                         .frame(maxWidth: .infinity)
                         .frame(maxHeight: .infinity)
@@ -80,13 +92,25 @@ struct KitchenView: View {
                     .offset(CGSize(width: 250, height: -100))
                     .sheet(isPresented: $sheetBarco, onDismiss: { abriuBarco = true }, content: {
                         
-                        VStack {
-                            Text("barco")
-                            Button {
+                        ZStack {
+                            Button(action: {
                                 sheetBarco.toggle()
-                            } label: {
-                                Text("Fecha")
-                            }
+                            }, label: {
+                                Image(systemName: "xmark")
+                                    .font(.title3)
+                                    .fontWeight(.bold)
+                            })
+                            .offset(x: -320, y: -340)
+                            
+                            Text("BARCO")
+                                .font(.custom("VastShadow-Regular", size: 24))
+                                .foregroundStyle(Color("marrom"))
+                                .padding()
+                                .offset(y: -325)
+                            
+                            ScrollView{
+                                
+                            }.offset(y: 75)
                         }
                         .frame(maxWidth: .infinity)
                         .frame(maxHeight: .infinity)
@@ -115,13 +139,25 @@ struct KitchenView: View {
                     .offset(CGSize(width: -20, height: -60))
                     .sheet(isPresented: $sheetFuba, onDismiss: { abriuFuba = true }, content: {
                         
-                        VStack {
-                            Text("fuba")
-                            Button {
+                        ZStack {
+                            Button(action: {
                                 sheetFuba.toggle()
-                            } label: {
-                                Text("Fecha")
-                            }
+                            }, label: {
+                                Image(systemName: "xmark")
+                                    .font(.title3)
+                                    .fontWeight(.bold)
+                            })
+                            .offset(x: -320, y: -340)
+                            
+                            Text("FUBÁ")
+                                .font(.custom("VastShadow-Regular", size: 24))
+                                .foregroundStyle(Color("marrom"))
+                                .padding()
+                                .offset(y: -325)
+                            
+                            ScrollView{
+                                
+                            }.offset(y: 75)
                         }
                         .frame(maxWidth: .infinity)
                         .frame(maxHeight: .infinity)
@@ -148,13 +184,25 @@ struct KitchenView: View {
                     .offset(CGSize(width: 400, height: -10))
                     .sheet(isPresented: $sheetRetrato, onDismiss: { abriuRetrato = true }, content: {
                         
-                        VStack {
-                            Text("retrato")
-                            Button {
+                        ZStack {
+                            Button(action: {
                                 sheetRetrato.toggle()
-                            } label: {
-                                Text("Fecha")
-                            }
+                            }, label: {
+                                Image(systemName: "xmark")
+                                    .font(.title3)
+                                    .fontWeight(.bold)
+                            })
+                            .offset(x: -320, y: -340)
+                            
+                            Text("RETRATO")
+                                .font(.custom("VastShadow-Regular", size: 24))
+                                .foregroundStyle(Color("marrom"))
+                                .padding()
+                                .offset(y: -325)
+                            
+                            ScrollView{
+                                
+                            }.offset(y: 75)
                         }
                         .frame(maxWidth: .infinity)
                         .frame(maxHeight: .infinity)
