@@ -12,8 +12,6 @@ struct FinalView: View {
     @State private var sheetReceita = false
     @State private var sheetCredits = false
     
-    @ObservedObject var audioManager = AudioManager()
-    
     var body: some View {
         ZStack {
             Image("final")

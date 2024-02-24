@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MsgView: View {
-    @State private var isShowingSheet = false
     
     @State private var mensagem = Mensagem.empty
     
