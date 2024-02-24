@@ -1,9 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    @ObservedObject var audioManager = AudioManager()
-    
+
     var body: some View {
             ZStack {
                 //images
@@ -70,10 +68,6 @@ struct ContentView: View {
             .frame(maxHeight: .infinity)
             .background(Color("amarelo"))
             .navigationBarBackButtonHidden()
-            .onAppear {
-                audioManager.stopAll()
-//                audioManager.playAudio(for: "Move Like That", loop: true)
-            }
     }
 }
 

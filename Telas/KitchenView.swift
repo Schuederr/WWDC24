@@ -283,7 +283,7 @@ There are three distinct varieties of fubá, each differing in thickness and cul
                                 Text("""
 Fubá plays a fundamental role in crafting a wide variety of dishes, such as cakes, bread, puddings, *angu* and *polenta*.
 
-It is worth noting that many of these recipes are **meant to be shared**. Fubá cake, in particular, has become a tradition during the popular Brazilian festivities known as "festas juninas," which take place annually in June.
+It is worth noting that many of these recipes are **meant to be shared**. Fubá cake, in particular, has become a tradition during the popular Brazilian festivities known as "festas juninas", which take place annually in June.
 
 Food has the unique power to build bonds with cherished people and places, to evoke memories and to connect to the history of a nation.
 

@@ -12,7 +12,7 @@ struct FinalView: View {
     @State private var sheetReceita = false
     @State private var sheetCredits = false
     
-    let gridItems = [GridItem(), GridItem()]
+    @ObservedObject var audioManager = AudioManager()
     
     var body: some View {
         ZStack {

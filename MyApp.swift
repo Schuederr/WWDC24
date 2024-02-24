@@ -7,11 +7,16 @@ struct MyApp: App {
             try! UIFont.registerFonts(withExtension: "ttf")
         }
     
+    @ObservedObject var audioManager = AudioManager()
+    
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                FinalView()
+                ContentView()
+            }.onAppear {
+                audioManager.playAudio(for: "Move Like That", loop: true)
             }
+            
         }
     }
 }
