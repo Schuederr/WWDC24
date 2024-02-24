@@ -73,15 +73,18 @@ struct PourCakeView: View {
                         Image("fala")
                             .resizable()
                             .scaledToFit()
-                            .scaleEffect(0.6)
+                            .scaleEffect(0.75)
                             .ignoresSafeArea()
-                        Text("blablablabla nao defini ainda mas vai fala pra virar o ipad")
-                            .font(.custom("Arvo", size: 20))
+                        Text("Now that the dough is ready, let’s pour it in the pan.\n\nI can guarantee you that fubá cake tastes better if it’s made in a rounded pan with a hole in the middle\n\nI’ve already greased the pan for you, so all you have to do is **tilt the iPad** to pour the dough.")
+                            .font(.custom("Arvo", size: 24))
                             .multilineTextAlignment(.leading)
                             .foregroundStyle(Color("marrom"))
-                            .frame(width: 650, height: 250)
-                            .offset(CGSize(width: 25, height: 0))
-                    }.offset(CGSize(width: -225, height: -270))
+                            .frame(width: 700, height: 350)
+                            .offset(CGSize(width: 40, height: -7))
+                            .rotationEffect(Angle(degrees: -2))
+
+                    }
+                    .offset(x: -150, y: -230)
                         .padding(.bottom)
                     Text("Tap the screen")
                         .frame(width: 200, height: 50)
@@ -90,7 +93,7 @@ struct PourCakeView: View {
                         .foregroundStyle(Color("marrom"))
                         .background(Color("amarelinho"))
                         .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
-                        .offset(CGSize(width: 100, height: 80))
+                        .offset(CGSize(width: 00, height: 80))
                 }.onTapGesture {
                     jaClicou = true
                     viewModel.isRotating = true
@@ -108,15 +111,16 @@ struct PourCakeView: View {
                         Image("fala")
                             .resizable()
                             .scaledToFit()
-                            .scaleEffect(0.6)
+                            .scaleEffect(0.7)
                             .ignoresSafeArea()
-                        Text("acabou")
+                        Text("That was easy, right?\n\nNow let me put the baking pan in the oven for you.")
+                            .font(.custom("Arvo", size: 24))
                             .multilineTextAlignment(.leading)
-                            .frame(width: 650, height: 250)
-                            .offset(CGSize(width: 25, height: 0))
-                            .font(.custom("Arvo", size: 20))
-                    }.offset(CGSize(width: -225, height: -270))
-                        .padding(.bottom)
+                            .foregroundStyle(Color("marrom"))
+                            .frame(width: 700, height: 350)
+                            .offset(CGSize(width: 40, height: 0))
+                            .rotationEffect(Angle(degrees: -2))
+                    }.offset(x: -150, y: -230)
                     
                     VStack(alignment: .trailing) {
                         NavigationLink {

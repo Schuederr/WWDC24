@@ -249,7 +249,7 @@ struct CakeView: View {
                             .ignoresSafeArea()
                         
                         if liquidSpeech {
-                            Text("Fubá cake is very simple to bake.\nAll the ingredients go straight into the blender.\n\nFirst, we should add all the liquids, so it’s easier to blend.\n\n**Drag them to the blender.**")
+                            Text("Fubá cake is very simple to bake.\nAll the ingredients go straight into the blender.\n\nFirst, we should add all the liquids. It’s easier to blend if the liquids are at the bottom.\n\n**Drag them to the blender.**")
                                 .font(.custom("Arvo", size: 24))
                                 .multilineTextAlignment(.leading)
                                 .foregroundStyle(Color("marrom"))
@@ -265,7 +265,7 @@ struct CakeView: View {
                                 .rotationEffect(Angle(degrees: -2))
                         }
                         if powderSpeech {
-                            Text("Lastly, we add the baking powder, of course.\n\n**Drag it to the blender.**")
+                            Text("Lastly, we add the baking powder.\n\n**Drag it to the blender.**")
                                 .font(.custom("Arvo", size: 24))
                                 .multilineTextAlignment(.leading)
                                 .foregroundStyle(Color("marrom"))

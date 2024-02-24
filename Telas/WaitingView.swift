@@ -59,18 +59,17 @@ struct WaitingView: View {
                     Image("fala")
                         .resizable()
                         .scaledToFit()
-                        .scaleEffect(0.7)
+                        .scaleEffect(0.9)
                         .ignoresSafeArea()
-                    VStack {
-                        Text("ta no forno pera ai")
-                            .foregroundStyle(Color("marrom"))
-                            .font(.custom("Arvo", size: 20))
-                            .multilineTextAlignment(.leading)
-                    }
-                    .frame(width: 500, height: 200)
-                    //                            .background()
-                    .offset(CGSize(width: 25, height: 0))
-                }.offset(CGSize(width: 10.0, height: -250))
+
+                        Text("You’ve just made your first ever bolo de fubá!\nNow we just wait for it to bake.\n\nOh, and I’m making us coffee. It goes really well with this cake.\n\nWe’re having a classic “Bolo de fubá com café”!")
+                        .font(.custom("Arvo", size: 24))
+                        .multilineTextAlignment(.leading)
+                        .foregroundStyle(Color("marrom"))
+                        .frame(width: 600, height: 275, alignment: .topLeading)
+                        .offset(x: 30, y: 30)
+                        .rotationEffect(Angle(degrees: -2))
+                }.offset(x: 00, y: -250)
             }
             
             if isCooked == true {

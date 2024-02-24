@@ -47,13 +47,21 @@ struct KitchenView: View {
                     .frame(width: 120, height: 220)
                     .offset(CGSize(width: -150, height: -150))
                     .sheet(isPresented: $sheetFolhinha, onDismiss: { abriuFolhinha = true }, content: {
-                        Text("folhinha")
-                        Button {
-                            sheetFolhinha.toggle()
-                        } label: {
-                            Text("Fecha")
+                        
+                        VStack {
+                            Text("folhinha")
+                            Button {
+                                sheetFolhinha.toggle()
+                            } label: {
+                                Text("Fecha")
+                            }
                         }
+                        .frame(maxWidth: .infinity)
+                        .frame(maxHeight: .infinity)
+                        .ignoresSafeArea()
+                        .background(Color("begezinho"))
                     })
+                    
                     .task {
                         withAnimation(.bouncy(duration: 0.65).repeatForever()) {
                             isAnimating = true
@@ -71,12 +79,20 @@ struct KitchenView: View {
                     .frame(width: 140, height: 225)
                     .offset(CGSize(width: 250, height: -100))
                     .sheet(isPresented: $sheetBarco, onDismiss: { abriuBarco = true }, content: {
-                        Text("barco")
-                        Button {
-                            sheetBarco.toggle()
-                        } label: {
-                            Text("Fecha")
+                        
+                        VStack {
+                            Text("barco")
+                            Button {
+                                sheetBarco.toggle()
+                            } label: {
+                                Text("Fecha")
+                            }
                         }
+                        .frame(maxWidth: .infinity)
+                        .frame(maxHeight: .infinity)
+                        .ignoresSafeArea()
+                        .background(Color("begezinho"))
+
                     })
                     .task {
                         withAnimation(.bouncy(duration: 0.7).repeatForever()) {
@@ -98,12 +114,20 @@ struct KitchenView: View {
                     .frame(width: 135, height: 165)
                     .offset(CGSize(width: -20, height: -60))
                     .sheet(isPresented: $sheetFuba, onDismiss: { abriuFuba = true }, content: {
-                        Text("fuba")
-                        Button {
-                            sheetFuba.toggle()
-                        } label: {
-                            Text("Fecha")
+                        
+                        VStack {
+                            Text("fuba")
+                            Button {
+                                sheetFuba.toggle()
+                            } label: {
+                                Text("Fecha")
+                            }
                         }
+                        .frame(maxWidth: .infinity)
+                        .frame(maxHeight: .infinity)
+                        .ignoresSafeArea()
+                        .background(Color("begezinho"))
+
                     })
                     .task {
                         withAnimation(.bouncy(duration: 0.6).repeatForever()) {
@@ -124,12 +148,19 @@ struct KitchenView: View {
                     .offset(CGSize(width: 400, height: -10))
                     .sheet(isPresented: $sheetRetrato, onDismiss: { abriuRetrato = true }, content: {
                         
-                        Text("retrato")
-                        Button {
-                            sheetRetrato.toggle()
-                        } label: {
-                            Text("Fecha")
+                        VStack {
+                            Text("retrato")
+                            Button {
+                                sheetRetrato.toggle()
+                            } label: {
+                                Text("Fecha")
+                            }
                         }
+                        .frame(maxWidth: .infinity)
+                        .frame(maxHeight: .infinity)
+                        .ignoresSafeArea()
+                        .background(Color("begezinho"))
+
                     })
                     .task {
                         withAnimation(.bouncy(duration: 0.75).repeatForever()) {

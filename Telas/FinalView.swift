@@ -10,7 +10,7 @@ import SwiftUI
 struct FinalView: View {
     
     @State private var sheetReceita = false
-    @State private var sheetCredits = false
+    @State private var sheetCredits = true
     
     var body: some View {
         ZStack {
@@ -23,17 +23,18 @@ struct FinalView: View {
                 Image("fala")
                     .resizable()
                     .scaledToFit()
-                    .scaleEffect(0.5)
+                    .scaleEffect(0.6)
                     .ignoresSafeArea()
                 
-                Text("acabou tchau")
-                    .font(.custom("Arvo", size: 20))
-                    .foregroundStyle(Color("marrom"))
+                Text("This cake is looking delicious! You're really a gifted cook.\n\nI'm so glad that you came in today and we spent some time together.")
+                    .font(.custom("Arvo", size: 24))
                     .multilineTextAlignment(.leading)
-                    .frame(width: 500, height: 200)
-                //                            .background()
-                    .offset(CGSize(width: 25, height: 0))
-            }.offset(CGSize(width: 180, height: -300))
+                    .foregroundStyle(Color("marrom"))
+                    .frame(width: 600, height: 185, alignment: .topLeading)
+                    .offset(x: 45, y: 15)
+                    .rotationEffect(Angle(degrees: -2))
+//                    .background()
+            }.offset(x: 180, y: -275)
             
             Image("bolo")
                 .scaleEffect(0.4)
@@ -42,7 +43,7 @@ struct FinalView: View {
                 .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
             
             //buttons
-            VStack(alignment: .trailing, spacing: 32) {
+            VStack(alignment: .trailing, spacing: 20) {
                 Button(action: {
                     sheetReceita.toggle()
                 }, label: {
@@ -52,13 +53,20 @@ struct FinalView: View {
                         .frame(width: 330, height: 75)
                         .background(Color("begezinho"))
                         .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
+                    
                 }).sheet(isPresented: $sheetReceita, content: {
-                    Text("receita")
-                    Button(action: {
-                        sheetReceita.toggle()
-                    }, label: {
-                        Text("Fecha")
-                    })
+                    VStack {
+                        Text("receita")
+                        Button(action: {
+                            sheetReceita.toggle()
+                        }, label: {
+                            Text("Fecha")
+                        })
+                    }
+                    .frame(maxWidth: .infinity)
+                    .frame(maxHeight: .infinity)
+                    .ignoresSafeArea()
+                    .background(Color("begezinho"))
                 })
                 
                 Button(action: {
@@ -72,12 +80,18 @@ struct FinalView: View {
                         .background(Color("marrom"))
                         .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
                 }).sheet(isPresented: $sheetCredits, content: {
-                    Text("credits")
-                    Button(action: {
-                        sheetCredits.toggle()
-                    }, label: {
-                        Text("Fecha")
-                    })
+                    VStack {
+                        Text("credits")
+                        Button(action: {
+                            sheetCredits.toggle()
+                        }, label: {
+                            Text("Fecha")
+                        })
+                    }.frame(maxWidth: .infinity)
+                        .frame(maxHeight: .infinity)
+                        .ignoresSafeArea()
+                        .background(Color("begezinho"))
+
                 })
                 
                 NavigationLink {
