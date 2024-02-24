@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FinalView: View {
     
-    @State private var sheetReceita = true
+    @State private var sheetReceita = false
     @State private var sheetCredits = false
     
     let gridItems = [GridItem(), GridItem()]
@@ -55,9 +55,7 @@ struct FinalView: View {
                         .frame(width: 330, height: 75)
                         .background(Color("begezinho"))
                         .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
-                    
                 }).sheet(isPresented: $sheetReceita, content: {
-                    
                     ZStack {
                         Button(action: {
                             sheetReceita.toggle()
@@ -68,17 +66,44 @@ struct FinalView: View {
                         })
                         .offset(x: -320, y: -340)
                         
-                        Text("RECIPE")
+                        Text("FUBÁ CAKE RECIPE")
                             .font(.custom("VastShadow-Regular", size: 24))
                             .foregroundStyle(Color("marrom"))
                             .padding()
                             .offset(y: -325)
                         
-                        ScrollView{
+                        VStack {
+                            VStack(alignment: .leading) {
+                                Text("Ingredients")
+                                    .font(.custom("Arvo-bold", size: 18))
+                                    .foregroundStyle(Color("marrom"))
+                                
+                                Text("""
+                                     - 1 cup of wheat flour
+                                     - 1 cup of sugar
+                                     - 1 cup of fubá (you can use cornmeal)
+                                     - 1 cup of milk
+                                     - 1 cup of baking oil
+                                     - 3 eggs
+                                     - 1 tablespoon of baking powder
+                                     """)
+                                .font(.custom("Arvo", size: 18))
+                                .foregroundStyle(Color("marrom"))
+                                .padding(12)
+                                
+                                Text("Instructions")
+                                    .font(.custom("Arvo-bold", size: 18))
+                                    .foregroundStyle(Color("marrom"))
+                                    .padding(.top)
+                                
+                                Text("Add the liquids to a blender and blend.\nThen add the wheat flour, sugar and fubá and blend.\nAdd the baking powder and blend again. \n\nPour the dough in a greased pan. Preferably use a rounded pan with a hole in the middle (bundt pan).\n\nYou can fill it as you like. My grandma likes to add anise seeds, guava paste or chocolate.\n\nBake it at 350°F (180°C) for about 40 minutes")
+                                    .font(.custom("Arvo", size: 18))
+                                    .foregroundStyle(Color("marrom"))
+                                    .padding()
+                            }.padding()
+                            .frame(maxWidth: .infinity)
                             
-                            
-                            
-                        }.offset(y: 75)
+                        }
                     }
                     .frame(maxWidth: .infinity)
                     .frame(maxHeight: .infinity)
@@ -98,7 +123,6 @@ struct FinalView: View {
                         .background(Color("marrom"))
                         .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
                 }).sheet(isPresented: $sheetCredits, content: {
-                    
                     ZStack {
                         Button(action: {
                             sheetCredits.toggle()
@@ -139,7 +163,7 @@ struct FinalView: View {
                                     .font(.custom("Arvo", size: 14))
                                     .foregroundStyle(Color("marrom"))
                                     .padding(.horizontal)
-
+                                
                                 
                                 //images
                                 Text("Images")
@@ -163,7 +187,7 @@ struct FinalView: View {
                                     .font(.custom("Arvo", size: 14))
                                     .foregroundStyle(Color("marrom"))
                                     .padding(.horizontal)
-                                    .padding(.vertical, 2)                                
+                                    .padding(.vertical, 2)
                                 Text("Picture from Pixabay: https://www.pexels.com/pt-br/foto/planta-de-folhas-marrons-em-foco-fotografia-37837/")
                                     .font(.custom("Arvo", size: 14))
                                     .foregroundStyle(Color("marrom"))
@@ -193,7 +217,7 @@ struct FinalView: View {
                                     .foregroundStyle(Color("marrom"))
                                     .padding(.horizontal)
                                     .padding(.vertical, 2)
-
+                                
                                 Text("Picture from Anna Shvets: https://www.pexels.com/pt-br/foto/ovo-em-um-fundo-vermelho-4045697/")
                                     .font(.custom("Arvo", size: 14))
                                     .foregroundStyle(Color("marrom"))
@@ -211,7 +235,7 @@ struct FinalView: View {
                                     .foregroundStyle(Color("marrom"))
                                     .padding(.horizontal)
                                     .padding(.vertical, 2)
-
+                                
                             }
                         }
                         .offset(y: 75)
@@ -221,7 +245,6 @@ struct FinalView: View {
                     .frame(maxHeight: .infinity)
                     .ignoresSafeArea()
                     .background(Color("begezinho"))
-                    
                 })
                 
                 NavigationLink {
