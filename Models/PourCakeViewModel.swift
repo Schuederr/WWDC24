@@ -12,7 +12,7 @@ class PourCakeViewModel: ObservableObject {
     @Published var rotation = 0.0
     @Published var timeElapsed = 0.0
     @Published var isRotating = false
-    @Published var isFinished = true
+    @Published var isFinished = false
         
     let motionManager = CMMotionManager()
     let motionQueue = OperationQueue()

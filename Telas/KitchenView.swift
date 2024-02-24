@@ -240,7 +240,7 @@ struct KitchenView: View {
                                 .ignoresSafeArea()
                             VStack {
                                 Text("Hi, kid! I'm so happy you're here to bake a ''bolo de fubá'' with me.\n\n''Bolo'' is portuguese for ''cake'', you know.\n\n And ''fubá'', well... You'll find out what it means if you explore my kitchen while I grab the ingredients for our fubá cake.")
-                                    .font(.custom("Arvo", size: 23))
+                                    .font(.custom("Arvo", size: 22))
                                     .multilineTextAlignment(.leading)
                                     .foregroundStyle(Color("marrom"))
                             }
@@ -287,12 +287,11 @@ struct KitchenView: View {
                                 .ignoresSafeArea()
                             VStack {
                                 Text("It's interesting how fubá is something so common in our daily lives in Brazil, but we usually don’t think about it.\n\nAnyway... The ingredients are waiting for us.\n\nLet’s start baking!")
-                                    .font(.custom("Arvo", size: 24))
+                                    .font(.custom("Arvo", size: 22))
                                     .multilineTextAlignment(.leading)
                                     .foregroundStyle(Color("marrom"))
                             }
                             .frame(width: 670, height: 210, alignment: .topLeading)
-                            //                                                        .background()
                             .offset(CGSize(width: 40, height: 8))
                             .rotationEffect(Angle(degrees: -2))
                         }.offset(CGSize(width: 10.0, height: -250))

@@ -10,7 +10,7 @@ import SwiftUI
 struct FinalView: View {
     
     @State private var sheetReceita = false
-    @State private var sheetCredits = false
+    @State private var sheetCredits = true
     
     let gridItems = [GridItem(), GridItem()]
     
@@ -28,15 +28,14 @@ struct FinalView: View {
                     .scaleEffect(0.6)
                     .ignoresSafeArea()
                 
-                Text("This cake is looking delicious! You're really a gifted cook.\n\nI'm so glad that you came in today and we spent some time together.")
-                    .font(.custom("Arvo", size: 24))
+                Text("This cake is looking delicious! You're a gifted cook.\n\nI'm really glad that you came in today and we spent some time together.")
+                    .font(.custom("Arvo", size: 22))
                     .multilineTextAlignment(.leading)
                     .foregroundStyle(Color("marrom"))
                     .frame(width: 600, height: 185, alignment: .topLeading)
-                    .offset(x: 45, y: 15)
+                    .offset(x: 45, y: 20)
                     .rotationEffect(Angle(degrees: -2))
-                //                    .background()
-            }.offset(x: 180, y: -275)
+            }.offset(x: 230, y: -300)
             
             Image("bolo")
                 .scaleEffect(0.4)
@@ -56,29 +55,31 @@ struct FinalView: View {
                         .background(Color("begezinho"))
                         .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
                 }).sheet(isPresented: $sheetReceita, content: {
-                    ZStack {
-                        Button(action: {
-                            sheetReceita.toggle()
-                        }, label: {
-                            Image(systemName: "xmark")
-                                .font(.title3)
-                                .fontWeight(.bold)
-                        })
-                        .offset(x: -320, y: -340)
+                    VStack {
+                        HStack {
+                            Button(action: {
+                                sheetReceita.toggle()
+                            }, label: {
+                                Image(systemName: "xmark")
+                                    .font(.title3)
+                                    .fontWeight(.bold)
+                            })
+                            .padding()
+                            Spacer()
+                        }
                         
                         Text("FUBÁ CAKE RECIPE")
                             .font(.custom("VastShadow-Regular", size: 24))
                             .foregroundStyle(Color("marrom"))
-                            .padding()
-                            .offset(y: -325)
+                        //                            .padding()
+                        //                            .offset(y: -400)
                         
-                        VStack {
-                            VStack(alignment: .leading) {
-                                Text("Ingredients")
-                                    .font(.custom("Arvo-bold", size: 18))
-                                    .foregroundStyle(Color("marrom"))
-                                
-                                Text("""
+                        VStack(alignment: .leading) {
+                            Text("Ingredients")
+                                .font(.custom("Arvo-bold", size: 18))
+                                .foregroundStyle(Color("marrom"))
+                            
+                            Text("""
                                      - 1 cup of wheat flour
                                      - 1 cup of sugar
                                      - 1 cup of fubá (you can use cornmeal)
@@ -87,23 +88,22 @@ struct FinalView: View {
                                      - 3 eggs
                                      - 1 tablespoon of baking powder
                                      """)
+                            .font(.custom("Arvo", size: 18))
+                            .foregroundStyle(Color("marrom"))
+                            .padding(12)
+                            
+                            Text("Instructions")
+                                .font(.custom("Arvo-bold", size: 18))
+                                .foregroundStyle(Color("marrom"))
+                                .padding(.top)
+                            
+                            Text("Add the liquids to a blender and blend.\nThen add the wheat flour, sugar and fubá and blend.\nAdd the baking powder and blend again. \n\nPour the dough in a greased pan. Preferably use a rounded pan with a hole in the middle (bundt pan).\n\nYou can fill it as you like. My grandma likes to add anise seeds, guava paste or chocolate.\n\nBake it at 350°F (180°C) for about 40 minutes")
                                 .font(.custom("Arvo", size: 18))
                                 .foregroundStyle(Color("marrom"))
-                                .padding(12)
-                                
-                                Text("Instructions")
-                                    .font(.custom("Arvo-bold", size: 18))
-                                    .foregroundStyle(Color("marrom"))
-                                    .padding(.top)
-                                
-                                Text("Add the liquids to a blender and blend.\nThen add the wheat flour, sugar and fubá and blend.\nAdd the baking powder and blend again. \n\nPour the dough in a greased pan. Preferably use a rounded pan with a hole in the middle (bundt pan).\n\nYou can fill it as you like. My grandma likes to add anise seeds, guava paste or chocolate.\n\nBake it at 350°F (180°C) for about 40 minutes")
-                                    .font(.custom("Arvo", size: 18))
-                                    .foregroundStyle(Color("marrom"))
-                                    .padding()
-                            }.padding()
-                            .frame(maxWidth: .infinity)
-                            
+                                .padding()
                         }
+                        .padding()
+                        Spacer()
                     }
                     .frame(maxWidth: .infinity)
                     .frame(maxHeight: .infinity)
@@ -123,25 +123,26 @@ struct FinalView: View {
                         .background(Color("marrom"))
                         .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
                 }).sheet(isPresented: $sheetCredits, content: {
-                    ZStack {
-                        Button(action: {
-                            sheetCredits.toggle()
-                        }, label: {
-                            Image(systemName: "xmark")
-                                .font(.title3)
-                                .fontWeight(.bold)
-                        })
-                        .offset(x: -320, y: -340)
+                    VStack {
+                        HStack {
+                            Button(action: {
+                                sheetCredits.toggle()
+                            }, label: {
+                                Image(systemName: "xmark")
+                                    .font(.title3)
+                                    .fontWeight(.bold)
+                            })
+                            .padding(.top)
+                            .padding(.leading)
+                            Spacer()
+                        }
                         
                         Text("CREDITS")
                             .font(.custom("VastShadow-Regular", size: 24))
                             .foregroundStyle(Color("marrom"))
-                            .padding()
-                            .offset(y: -325)
                         
                         ScrollView {
                             VStack(alignment: .leading) {
-                                
                                 Text("Unreferenced resources on this page are owned by the author.")
                                     .font(.custom("Arvo-Bold", size: 14))
                                     .foregroundStyle(Color("marrom"))
@@ -238,7 +239,6 @@ struct FinalView: View {
                                 
                             }
                         }
-                        .offset(y: 75)
                         
                     }
                     .frame(maxWidth: .infinity)
@@ -260,7 +260,7 @@ struct FinalView: View {
                 
             }
             .frame(maxWidth: .infinity)
-            .offset(CGSize(width: 420, height: -40))
+            .offset(x: 400, y: -40)
             
         }.background(Color("amarelo"))
             .frame(maxWidth: .infinity)
