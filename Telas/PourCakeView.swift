@@ -79,7 +79,7 @@ struct PourCakeView: View {
                             .font(.custom("Arvo", size: 24))
                             .multilineTextAlignment(.leading)
                             .foregroundStyle(Color("marrom"))
-                            .frame(width: 700, height: 400)
+                            .frame(width: 700, height: 350)
                             .offset(CGSize(width: 40, height: 0))
                             .rotationEffect(Angle(degrees: -2))
 
