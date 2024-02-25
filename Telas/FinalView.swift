@@ -26,7 +26,7 @@ struct FinalView: View {
                     .scaleEffect(0.6)
                     .ignoresSafeArea()
                 
-                Text("This cake is looking delicious! You're a gifted cook.\n\nI'm really glad that you came in today and we spent some time together.")
+                Text("This cake is looking delicious! **You're a gifted cook.**\n\nI'm really glad that you came in today and we spent some time together.")
                     .font(.custom("Arvo", size: 22))
                     .multilineTextAlignment(.leading)
                     .foregroundStyle(Color("marrom"))

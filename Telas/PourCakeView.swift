@@ -75,11 +75,11 @@ struct PourCakeView: View {
                             .scaledToFit()
                             .scaleEffect(0.75)
                             .ignoresSafeArea()
-                        Text("Now that the dough is ready, let’s pour it in the pan.\n\nI can guarantee you that fubá cake tastes better if it’s made in a rounded pan with a hole in the middle\n\nI’ve already greased the pan for you, so all you have to do is **tilt the iPad** to pour the dough.")
+                        Text("Now that the dough is ready, let’s **pour it in the pan.**\n\nI can guarantee you that fubá cake tastes better if it’s made in a *rounded pan with a hole in the middle*\n\nI’ve already greased the pan for you, so all you have to do is **gently tilt the iPad** to pour the dough.")
                             .font(.custom("Arvo", size: 24))
                             .multilineTextAlignment(.leading)
                             .foregroundStyle(Color("marrom"))
-                            .frame(width: 700, height: 350)
+                            .frame(width: 700, height: 400)
                             .offset(CGSize(width: 40, height: 0))
                             .rotationEffect(Angle(degrees: -2))
 

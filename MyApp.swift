@@ -12,7 +12,8 @@ struct MyApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ContentView().onAppear {
+                ContentView()
+                    .onAppear {
                     audioManager.playAudio(for: "Move Like That", loop: true)
                 }
             }

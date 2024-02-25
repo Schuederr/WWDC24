@@ -145,13 +145,13 @@ The food is also recommended for pregnant women as it is a source of folic acid,
                                     .scaleEffect(0.8)
                                 
                                 Text("""
-The history of fubá dates back to the colonial past of Latin American countries.
+The history of fubá dates back to the **colonial past of Latin American countries.**
 
 Indigenous peoples revered this food as something sacred before the arrival of the Spanish and Portuguese on the continent.
 
-As colonization progressed and economic shifts occurred, it became a traditional food in the region, considered a staple in the economy.
+As colonization progressed and economic shifts occurred, it became a **traditional food** in the region, considered a staple in the economy.
 
-In the context of Brazilian history, Portuguese colonizers heavily relied on fubá for the preparation of various dishes, which persist in popularity throughout the country to this day.
+In the context of **Brazilian history**, Portuguese colonizers heavily relied on fubá for the preparation of various dishes, which *persist in popularity throughout the country to this day*.
 """)
                                     .font(.custom("Arvo", size: 20))
                                     .foregroundStyle(Color("marrom"))
@@ -214,9 +214,9 @@ In the context of Brazilian history, Portuguese colonizers heavily relied on fub
                                     .shadow(color: .black.opacity(0.25), radius: 2, x: 5, y: 5)
                                 
                                 Text("""
-Fubá (pronounced like *foo-bah*) is a word of African origin that means *flour*.
+*Fubá* (pronounced like *foo-bah*) is a word of African origin that means *flour*.
 
-In Brazilian lands, it refers to a type of cornmeal deeply rooted in Brazilian cuisine.
+In Brazilian lands, it refers to a **type of cornmeal deeply rooted in Brazilian cuisine.**
 
 This product results from the grinding of degerminated corn, resulting in a finer-flaked flour that absorbs more water than regular cornmeal.
 
@@ -283,9 +283,9 @@ There are three distinct varieties of fubá, each differing in thickness and cul
                                 Text("""
 Fubá plays a fundamental role in crafting a wide variety of dishes, such as cakes, bread, puddings, *angu* and *polenta*.
 
-It is worth noting that many of these recipes are **meant to be shared**. Fubá cake, in particular, has become a tradition during the popular Brazilian festivities known as "festas juninas", which take place annually in June.
+It is worth mentioning that many of these recipes are **meant to be shared**. Fubá cake, in particular, has become a tradition during the popular Brazilian festivities known as *festas juninas*, which take place annually in June.
 
-Food has the unique power to build bonds with cherished people and places, to evoke memories and to connect to the history of a nation.
+Food has the **unique power** to build bonds with cherished people and places, to evoke memories and to connect to the history of a nation.
 
 *Fubá carries within it flavors that transport us to a grandmother's home, to a specific time of the year, to festive celebrations, to historical echoes, and to **Brazil itself**.*
 """)
@@ -331,11 +331,11 @@ Food has the unique power to build bonds with cherished people and places, to ev
                                 .scaleEffect(0.9)
                                 .ignoresSafeArea()
                             
-                                Text("Hi, kid! I'm so happy you're here to bake a ''bolo de fubá'' with me.\n\n''Bolo'' is portuguese for ''cake'', you know.\n\n And ''fubá'', well... You'll find out what it means if you explore my kitchen while I grab the ingredients for our fubá cake.")
+                                Text("Hi, kid! I'm so happy you're here to bake a **bolo de fubá** with me.\n\n*Bolo* is portuguese for *cake*, you know.\n\n And *fubá*, well... You'll find out what it means if you **explore my kitchen** while I grab the ingredients for our fubá cake.")
                                     .font(.custom("Arvo", size: 22))
                                     .multilineTextAlignment(.leading)
                                     .foregroundStyle(Color("marrom"))
-                                    .frame(width: 680, height: 245, alignment: .topLeading)
+                                    .frame(width: 670, height: 245, alignment: .topLeading)
                                     .offset(CGSize(width: 40, height: 8))
                                     .rotationEffect(Angle(degrees: -2))
                             
@@ -378,7 +378,7 @@ Food has the unique power to build bonds with cherished people and places, to ev
                                 .scaleEffect(0.9)
                                 .ignoresSafeArea()
                             VStack {
-                                Text("It's interesting how fubá is something so common in our daily lives in Brazil, but we don't usually think about it.\n\nAnyway... The ingredients are waiting for us.\n\nLet’s start baking!")
+                                Text("It's interesting how fubá is something so common in our daily lives in Brazil, but we don't usually think about it.\n\nAnyway... The ingredients are waiting for us.\n\n**Let’s start baking!**")
                                     .font(.custom("Arvo", size: 22))
                                     .multilineTextAlignment(.leading)
                                     .foregroundStyle(Color("marrom"))

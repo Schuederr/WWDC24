@@ -62,12 +62,12 @@ struct WaitingView: View {
                         .scaleEffect(0.9)
                         .ignoresSafeArea()
 
-                        Text("You’ve just made your first ever bolo de fubá!\nNow we just wait for it to bake.\n\nOh, and I’m making us coffee. It goes really well with this cake.\n\nWe’re having a classic “Bolo de fubá com café”!")
+                        Text("You’ve just made your first ever bolo de fubá!\nNow we just wait for it to bake.\n\nOh, and I’m making us coffee. It goes really well with this cake.\n\nWe’re having a classic **bolo de fubá com café!**")
                         .font(.custom("Arvo", size: 24))
                         .multilineTextAlignment(.leading)
                         .foregroundStyle(Color("marrom"))
                         .frame(width: 600, height: 275, alignment: .topLeading)
-                        .offset(x: 30, y: 30)
+                        .offset(x: 30, y: 20)
                         .rotationEffect(Angle(degrees: -2))
                 }.offset(x: 00, y: -250)
             }
